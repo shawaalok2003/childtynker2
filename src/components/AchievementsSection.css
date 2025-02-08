@@ -1,0 +1,90 @@
+.achievements-section {
+  font-family: Arial, sans-serif;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+/* Top Info */
+.top-info {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.top-info div {
+  margin: 10px;
+}
+
+.new {
+  font-size: 30px;
+  color: #93339e;
+}
+
+/* Achievements Details */
+.achievements-details {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+/* Logos Section */
+.logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.logos img {
+  width: 300px; /* Adjusted for better responsiveness */
+  height: auto;
+  object-fit: contain;
+}
+
+/* Tablet View */
+@media (max-width: 1024px) {
+  .new {
+    font-size: 24px;
+  }
+
+  .logos img {
+    width: 200px; /* Smaller images for tablets */
+  }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .top-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .new {
+    font-size: 22px;
+  }
+
+  .logos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logos img {
+    width: 180px; /* Smaller size for mobile */
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+  .new {
+    font-size: 20px;
+  }
+
+  .logos img {
+    width: 150px;
+  }
+}

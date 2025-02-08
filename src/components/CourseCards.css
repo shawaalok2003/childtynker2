@@ -1,0 +1,277 @@
+/* Base styles for the course container */
+.course-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  animation: fadeInBackground 1s ease-in-out;
+}
+
+/* Background animation for container */
+@keyframes fadeInBackground {
+  from {
+      background-color: #eaeaea;
+  }
+  to {
+      background-color: #f9f9f9;
+  }
+}
+
+/* Filter section styling */
+.filter-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  animation: slideDown 0.5s ease-out;
+}
+
+.filter-container label {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.filter-select {
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.filter-select:focus {
+  border-color: #007bff;
+}
+
+/* Slide-down animation for filter section */
+@keyframes slideDown {
+  from {
+      transform: translateY(-20px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+/* Age group title styling */
+.age-group {
+  margin-bottom: 30px;
+  width: 100%;
+  text-align: center;
+}
+
+.header-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  opacity: 0;
+  animation: fadeInText 0.8s ease-in forwards;
+}
+
+.header-text .highlight {
+  color: #007bff;
+  animation: colorPulse 2s infinite;
+}
+
+/* Fade-in animation for text */
+@keyframes fadeInText {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Color pulse animation for highlighted text */
+@keyframes colorPulse {
+  0%, 100% {
+      color: #007bff;
+  }
+  50% {
+      color: #0056b3;
+  }
+}
+
+/* Card container with flex */
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  opacity: 0;
+  animation: fadeInCards 1s ease-in forwards;
+}
+
+/* Fade-in animation for cards */
+@keyframes fadeInCards {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Card styling */
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: popIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Pop-in animation for cards */
+@keyframes popIn {
+  from {
+      transform: scale(0.9);
+      opacity: 0;
+  }
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon animation */
+.icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  animation: bounce 1.5s infinite;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.course-name {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 10px 0;
+  opacity: 0;
+  animation: fadeInCourseName 0.8s ease forwards;
+}
+
+/* Fade-in animation for course name */
+@keyframes fadeInCourseName {
+  from {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.pricing {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.new-price {
+  color: #28a745;
+  font-weight: bold;
+}
+.new-price2{
+  color: #1e2b20;
+  font-weight: bold;
+  padding: 30px;
+
+}
+.sessions {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.module {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.certificate {
+  font-size: 1rem;
+  font-style: italic;
+  color: #777;
+}
+
+/* Video Link Button */
+.video-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  animation: slideUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+/* Slide-up animation for video link */
+@keyframes slideUp {
+  from {
+      transform: translateY(20px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+.video-link:hover {
+  background-color: #0056b3;
+}
+
+/* No Video Text */
+.no-video {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #999;
+  font-style: italic;
+  animation: fadeIn 0.8s ease-in forwards;
+  opacity: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card-container {
+      flex-direction: column;
+      align-items: center;
+  }
+}

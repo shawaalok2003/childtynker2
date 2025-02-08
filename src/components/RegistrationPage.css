@@ -1,0 +1,94 @@
+/* RegistrationPage.css */
+.registration-page {
+  background-color: #f5f8fc; /* Light, soft background color */
+  color: #3c4a72; /* Darker, neutral text color for readability */
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 80px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 16px;
+  color: #3c4a72;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"] {
+  background-color: #e9f7fd; /* Light blue background */
+}
+
+textarea {
+  background-color: #fff3e0; /* Soft peach background */
+  resize: vertical;
+}
+
+select {
+  background-color: #f9f9f9; /* Very light gray background */
+}
+
+button {
+  background-color: #ff9800; /* Vibrant orange button */
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e68900; /* Darker orange on hover */
+}
+
+button:focus {
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #ff9800; /* Highlight input fields on focus */
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+textarea::placeholder {
+  color: #8e8e8e;
+}
+
+h2 {
+  color: #4caf50; /* Green for child-related fields */
+}

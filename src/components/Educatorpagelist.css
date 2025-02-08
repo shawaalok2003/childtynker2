@@ -1,0 +1,81 @@
+/* Educatorpagelist.css */
+.educator-list {
+  text-align: center;
+  margin: 20px;
+}
+
+.educator-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 0;
+  list-style-type: none;
+}
+
+.educator-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 300px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s forwards;
+  position: relative; /* For proper positioning of elements inside */
+}
+
+.educator-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.25);
+}
+
+.educator-photo {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+.educator-info {
+  padding: 15px;
+}
+
+.educator-info h2 {
+  margin: 10px 0;
+  font-size: 1.6rem;
+  color: #333;
+  font-weight: 600; /* Bold for emphasis */
+}
+
+.educator-info p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.5; /* Improved readability */
+}
+
+.educator-info a {
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.educator-info a:hover {
+  color: #0056b3;
+  text-decoration: underline; /* Clear visual cue */
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

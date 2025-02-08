@@ -1,0 +1,133 @@
+/* Overall Container Style */
+.wise-child-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #11a030;
+    margin-bottom: 1rem;
+    animation: slideIn 1s ease-out;
+  }
+  
+  /* Boxes for each section */
+  .details-box, .features-box, .projects-box, .pricing-box {
+    margin-bottom: 2rem;
+  }
+  
+  .details-box .detail-item, 
+  .features-box .feature-item, 
+  .projects-box .project-item, 
+  .pricing-box .pricing-item {
+    background-color: #fff;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+  }
+  
+  .details-box .detail-item p,
+  .features-box .feature-item p,
+  .projects-box .project-item p,
+  .pricing-box .pricing-item p {
+    margin-left: 10px;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  .icon, .project-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    color: #93339e;
+    transition: transform 0.3s ease;
+  }
+  
+  .icon:hover, .project-icon:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Styling for Pricing Section */
+  .pricing-box .pricing-item p {
+    font-size: 1.3rem;
+    color: #93339e;
+    font-weight: bold;
+  }
+  
+  /* Enroll Button */
+  .enroll-btn {
+    display: inline-block;
+    background-color: #93339e;
+    color: white;
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .enroll-btn:hover {
+    background-color: #ffd700;
+    color: #93339e;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-50px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    .wise-child-container {
+      padding: 1rem;
+    }
+  
+    .title {
+      font-size: 2rem;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    .pricing-item {
+      font-size: 1.2rem;
+    }
+  
+    .enroll-btn {
+      font-size: 1rem;
+      padding: 0.7rem 1.5rem;
+    }
+  
+    .icon, .project-icon {
+      width: 25px;
+      height: 25px;
+    }
+  }

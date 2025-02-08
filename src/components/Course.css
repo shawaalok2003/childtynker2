@@ -1,0 +1,116 @@
+/* Main container for the layout */
+.pillars-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #ffffff;
+  }
+  
+  /* Left side text styles */
+  .pillars-text {
+    flex: 1;
+    padding-right: 30px;
+  }
+  
+  .pillars-text h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .pillars-text .highlight {
+    color: #ff6f3c;
+    font-size: 3.2rem;
+  }
+  
+  .pillars-text p {
+    font-size: 1.2rem;
+    color: #34495e;
+    line-height: 1.8;
+    margin-bottom: 30px;
+  }
+  
+  .pillars-text .emphasis {
+    color: #ff6f3c;
+    font-weight: bold;
+  }
+  
+  .cta-button {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #6a5acd;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #483d8b;
+    transform: scale(1.05);
+  }
+  
+  /* Right side pillars visual styles */
+  .pillars-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+  }
+  
+  .pillar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .pillar-number {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .pillar-text {
+    flex: 1;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .pillars-container {
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    .pillars-text {
+      text-align: center;
+      padding-right: 0;
+      margin-bottom: 30px;
+    }
+  
+    .pillars-visual {
+      align-items: center;
+    }
+  
+    .pillar-text {
+      text-align: center;
+    }
+  }

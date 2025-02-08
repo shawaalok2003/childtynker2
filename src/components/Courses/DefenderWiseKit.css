@@ -1,0 +1,127 @@
+/* Overall Container */
+.defender-wisekit-container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9fc;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #0052cc;
+  margin-bottom: 1.5rem;
+  animation: slideIn 1s ease-out;
+}
+
+/* Section Boxes */
+.details-box, .features-box, .projects-box, .pricing-box {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.details-box .detail-item, 
+.features-box ul li, 
+.projects-box ul li, 
+.pricing-box .price-item {
+  background-color: #e3eefe;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  color: #0052cc;
+  transition: transform 0.3s ease;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+/* Pricing */
+.pricing-box .price-item {
+  font-size: 1.5rem;
+  color: #0052cc;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Enroll Button */
+.enroll-btn {
+  display: block;
+  background-color: #0052cc;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin: 0 auto;
+  max-width: 200px;
+}
+
+.enroll-btn:hover {
+  background-color: #ffcc00;
+  color: #0052cc;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-40px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .defender-wisekit-container {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .pricing-box .price-item {
+    font-size: 1.3rem;
+  }
+
+  .enroll-btn {
+    font-size: 1rem;
+    padding: 0.7rem 1.5rem;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+}

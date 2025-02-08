@@ -1,0 +1,91 @@
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #93339e; /* Deep purple for a professional and vibrant look */
+  color: #FFFFFF;
+  padding: 40px 20px;
+  font-family: 'Roboto', Arial, sans-serif;
+  border-top: 4px solid #93339e; /* Adds a subtle border for separation */
+}
+
+.logo-section {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.logo-text {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  color: #FFCC00; /* Gold color for a standout effect */
+}
+
+.tagline {
+  font-size: 16px;
+  margin: 5px 0 0;
+  color: #FFFFFF;
+  font-style: italic;
+}
+
+.links-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px; /* Adds spacing between columns */
+}
+
+.column {
+  flex: 1;
+  margin-bottom: 20px;
+  min-width: 220px; /* Ensures columns maintain a reasonable width */
+}
+
+.column-header {
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #FFCC00; /* Same gold color for section headers */
+  text-transform: uppercase;
+}
+
+.link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.link-item {
+  font-size: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #87CEEB; /* Light blue for links */
+  transition: color 0.3s ease-in-out;
+}
+
+.link-item:hover {
+  color: #FFCC00; /* Gold on hover for a unified theme */
+  text-decoration: underline;
+}
+
+.footer-info {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #D3D3D3; /* Light gray for a subtle appearance */
+  border-top: 1px solid #6A5ACD; /* Thin top border for separation */
+  padding-top: 20px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .links-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .column {
+    margin-left: 0;
+    text-align: center;
+  }
+}
