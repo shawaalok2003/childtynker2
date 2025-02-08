@@ -11,7 +11,7 @@
   justify-content: center;
   align-items: center;
   text-align: left;
-  background-image: url('C:\Users\SUSMIT SHAW\OneDrive\flutter project\childtynker\public\images\Untitled design (1).png'); /* Fix spaces */
+  background-image: url('/public/images/Untitled design (1).png'); /* Fix spaces */
 }
 
 @keyframes gradientAnimation {
