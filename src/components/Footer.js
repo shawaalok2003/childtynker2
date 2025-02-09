@@ -21,7 +21,6 @@ const Footer = () => {
           <ul style={{ listStyle: 'none', padding: '0', margin: '0' }}>
             <li><Link to="/" style={linkStyle}>Home</Link></li>
             <li><Link to="/about-us" style={linkStyle}>About Us</Link></li>
-            <li><Link to="/curriculum" style={linkStyle}>Curriculum</Link></li>
           </ul>
         </div>
 

@@ -7,6 +7,7 @@ const RefundPolicy = () => {
       <h1 className="refund-policy-title">REFUND POLICY</h1>
       <ul className="refund-policy-list">
         <li>100% Refund policy is there for any unused classes/credits</li>
+        <li>Refunds will be settled in 5-7 working days </li>
         <li>The kit payment is non-refundable for the processed items</li>
         <li>Payment received are not refundable after 3 classes since joining.</li>
         <li>
