@@ -1,33 +1,42 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // For navigation to registration page
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./HeroSection.css";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-  const navigate = useNavigate();
+  const [textIndex, setTextIndex] = useState(0);
 
-  // Function to handle the "Book Your First Free Class" button click
+  // Text switching between "robotics" and "coding"
+  const options = ["robotics", "coding"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTextIndex((prevIndex) => (prevIndex + 1) % options.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Navigation to registration page
   const handleBookingClick = () => {
-    navigate("/register"); // Redirect to registration page
+    navigate("/register");
   };
 
-  // Function to handle the "Download Curriculum" button click (opens the modal)
+  // Open modal for curriculum download
   const handleDownloadClick = () => {
-    setIsModalOpen(true); // Open the modal to ask for email and phone number
+    setIsModalOpen(true);
   };
 
-  // Function to validate email and phone number formats
+  // Email and phone validation
   const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const isValidPhone = (phone) => /^\d{10}$/.test(phone);
 
-  // Function to handle form submission
+  // Handle form submission
   const handleFormSubmit = (e) => {
     e.preventDefault();
-
-    // Validate email and phone before submission
     if (!isValidEmail(email)) {
       alert("Please enter a valid email address.");
       return;
@@ -37,35 +46,39 @@ const HeroSection = () => {
       return;
     }
 
-    setIsFormSubmitted(true); // After successful submission, allow download
+    setIsFormSubmitted(true);
     window.alert("Thank you! Your details have been submitted successfully.");
-    downloadCurriculum(); // Trigger the download automatically
+    downloadCurriculum();
   };
 
-  // Function to handle modal close action (in case user cancels or submits)
+  // Close the modal
   const handleCloseModal = () => {
-    setIsModalOpen(false); // Close the modal if user cancels or submits
+    setIsModalOpen(false);
   };
 
-  // Function to trigger the download of the PDF automatically
+  // Trigger the curriculum PDF download
   const downloadCurriculum = () => {
     const link = document.createElement("a");
     link.href = "/images/Course Overview PDF_ChildTynker (2).pdf";
-    link.download = "Curriculum.pdf"; // Name of the file to download
-    link.click(); // Trigger the download
-    setIsModalOpen(false); // Close the modal
+    link.download = "Curriculum.pdf";
+    link.click();
+    setIsModalOpen(false);
   };
 
   return (
     <section className="hero">
       <div className="hero__content">
-        {/* Left Side: Text */}
+        {/* Hero Text with Dynamic Effect */}
         <div className="hero__text">
           <h1>
-            Empower your child's future <span className="highlight">with robotics</span>
+            Empower your child's future{" "}
+            <span className="highlight fade-effect">
+              with {options[textIndex]}
+            </span>
           </h1>
           <p>
-            Let your child tynker, innovate, and experiment in our next-gen robotics & IoT program, paired with top tutors.
+            Let your child tynker, innovate, and experiment in our next-gen{" "}
+            {options[textIndex]} & IoT program, paired with top tutors.
           </p>
           <button className="hero__button" onClick={handleBookingClick}>
             Book Your First Free Class
@@ -79,7 +92,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Modal to collect email and phone number */}
+      {/* Modal for Email & Phone Input */}
       {isModalOpen && !isFormSubmitted && (
         <div className="modal">
           <div className="modal__content">
@@ -106,7 +119,9 @@ const HeroSection = () => {
               </div>
               <button type="submit">Submit</button>
             </form>
-            <button onClick={handleCloseModal} className="cancel-button">Cancel</button>
+            <button onClick={handleCloseModal} className="cancel-button">
+              Cancel
+            </button>
           </div>
         </div>
       )}

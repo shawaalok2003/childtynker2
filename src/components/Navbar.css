@@ -28,15 +28,15 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  height: 100px;
+  height: 40px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Logo */
 .navbar__logo img {
-  height: 220px;
-  margin: 40px;
-  margin-top: 80px;
+  height: 180px;
+  margin: 80px;
+  margin-top: 100px;
 }
 
 /* Navbar Links */
@@ -163,14 +163,13 @@ body {
   .navbar__links.active {
     display: flex;
   }
-
   .navbar__toggle {
     display: block;
   }
 
   .navbar__logo img {
     height: 80px;
-    margin-top: 30px;
+    margin: 10px;
   }
 
   .navbar__links li {
