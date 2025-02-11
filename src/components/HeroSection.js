@@ -71,9 +71,9 @@ const HeroSection = () => {
         {/* Hero Text with Dynamic Effect */}
         <div className="hero__text">
           <h1>
-            Empower your child's future{" "}
+            Empower your child's future with{" "}
             <span className="highlight fade-effect">
-              with {options[textIndex]}
+            {options[textIndex]}
             </span>
           </h1>
           <p>

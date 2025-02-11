@@ -49,8 +49,8 @@ const All = () => {
 
   return (
     <div className="child-tynker">
-      <h1 className="title">
-        Welcome to <span className="highlight">Child Tynker</span>
+      <h1 className="title1">
+        Welcome to <span className="highlight1">Child Tynker</span>
       </h1>
       <div className="grid-container">
         {sections.map((section, index) => (

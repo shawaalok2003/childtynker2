@@ -52,7 +52,7 @@ const ChampsCarousel = () => {
   return (
     <div className="carousel-container">
       <h1 className="carousel-title">
-        Watch our Champs <span className="highlight">learning in action</span>
+        Watch our Champs <span className="highlight1">learning in action</span>
       </h1>
 
       <Slider {...settings}>

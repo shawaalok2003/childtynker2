@@ -5,8 +5,8 @@ import './About.css'; // CSS file for styling
 const ChildTynker = () => {
   return (
     <div className="container">
-      <h1 className="title">
-        Why choose <span className="highlight">ChildTynker</span>
+      <h1 className="title1">
+        Why choose <span className="highlight1">ChildTynker</span>
       </h1>
       <div className="features">
         {/* Feature 1 */}
