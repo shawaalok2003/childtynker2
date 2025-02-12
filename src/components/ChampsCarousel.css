@@ -5,7 +5,10 @@
     background-color: #f9f9f9;
     font-family: "Arial", sans-serif;
   }
-  
+
+  .champ-card{
+    height: 80vh;
+  }
   .carousel-title {
     font-size: 2.5rem;
     font-weight: 600;
@@ -143,5 +146,6 @@
     .champ-project-image {
       width: 100%;
       max-width: 300px;
+      height: 100px;
     }
   }
