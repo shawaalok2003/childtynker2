@@ -6,8 +6,8 @@
   background-repeat: no-repeat;
   animation: gradientAnimation 8s ease infinite;
   color: #ffffff;
-  padding: 90px 20px;
   display: flex;
+  height: 100vh;
   justify-content: center;
   align-items: center;
   text-align: left;
@@ -175,7 +175,32 @@ button[type="submit"]:hover {
 .cancel-button:hover {
   background-color: #d32f2f;
 }
+/* Image Section for Mobile */
+.hero__image {
+  display: none;
+}
+.hero__image img {
+  width: 100%;
+  border-radius: 15px;
+}
+@media (max-width: 768px) {
+  .hero{
+    background-image: none;
+    background-color:  #93339e;
+  }
+  .hero__image {
+    display: block;
+    max-width: 100%;
+    margin-top: 20px;
+  }
+  .hero__text {
+    text-align: center;
+  }
 
+  .hero__text p {
+    display: none;
+  }
+}
 /* Animations */
 @keyframes fadeIn {
   from {

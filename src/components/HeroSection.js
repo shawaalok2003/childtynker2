@@ -73,13 +73,16 @@ const HeroSection = () => {
           <h1>
             Empower your child's future with{" "}
             <span className="highlight fade-effect">
-            {options[textIndex]}
+              {options[textIndex]}
             </span>
           </h1>
           <p>
             Let your child tynker, innovate, and experiment in our next-gen{" "}
             {options[textIndex]} & IoT program, paired with top tutors.
           </p>
+          <div className="hero__image">
+          <img src="/images/boy.png" alt="Hero" />
+        </div>
           <button className="hero__button" onClick={handleBookingClick}>
             Book Your First Free Class
           </button>
@@ -87,7 +90,9 @@ const HeroSection = () => {
             Download Curriculum
           </button>
           <div className="hero__logo">
-            <span>Including course material from Harvard Business Publishing</span>
+            <span>
+              Including course material from Harvard Business Publishing
+            </span>
           </div>
         </div>
       </div>
@@ -97,7 +102,10 @@ const HeroSection = () => {
         <div className="modal">
           <div className="modal__content">
             <h2>Download Curriculum</h2>
-            <p>To download the curriculum, please provide your email and phone number.</p>
+            <p>
+              To download the curriculum, please provide your email and phone
+              number.
+            </p>
             <form onSubmit={handleFormSubmit}>
               <div className="form-group">
                 <label>Email:</label>
