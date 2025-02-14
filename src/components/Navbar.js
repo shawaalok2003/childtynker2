@@ -73,8 +73,6 @@ const Navbar = () => {
               <li><NavLink to="/aiml-master-package" onClick={closeMobileMenu}>AI/ML Master Package</NavLink></li>
             </ul>
           </li>
-          <li><NavLink to="/buy-course" onClick={closeMobileMenu}>Buy a Course</NavLink></li>
-          <li><NavLink to="/success-stories" onClick={closeMobileMenu}>Success Stories</NavLink></li>
         </ul>
         <div className="navbar__actions">
         <NavLink to="/contact">
