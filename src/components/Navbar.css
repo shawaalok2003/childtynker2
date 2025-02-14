@@ -148,23 +148,37 @@ body {
 
 /* Mobile View */
 @media screen and (max-width: 768px) {
-  .navbar__links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100px;
-    left: 0;
-    background: #5c1d96;
-    width: 100%;
-    text-align: center;
-    padding: 20px;
+  .navbar__main {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .navbar__links.active {
-    display: flex;
+  /* Contact Icon */
+  .navbar__actions {
+    order: 1;
+    margin-right: auto;
   }
+
+  .navbar__actions .Contact {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  /* Hamburger Menu */
   .navbar__toggle {
     display: block;
+    order: 2;
+    margin-left: auto;
+    font-size: 28px;
+  }
+
+  /* Logo */
+  .navbar__logo {
+    order: 0;
+    flex-grow: 1;
+    text-align: center;
   }
 
   .navbar__logo img {
@@ -172,39 +186,25 @@ body {
     margin: 10px;
   }
 
-  .navbar__links li {
-    margin: 10px 0;
-  }
-
-  .navbar__links a {
-    display: flex;
+  /* Mobile Menu */
+  .navbar__links {
+    display: none;
     flex-direction: column;
-    align-items: center;
-  }
-
-  .navbar__links a img {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 5px;
-  }
-
-  .dropdown-menu {
-    position: static;
-    box-shadow: none;
-  }
-
-  .dropdown-toggle {
-    font-size: 22px;
-  }
-
-  .navbar__actions {
-    flex-direction: column;
-  }
-
-  .login-button,
-  .contact-button {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: #5c1d96;
     width: 100%;
     text-align: center;
-    margin-top: 10px;
+    padding: 20px;
+    z-index: 999;
+  }
+
+  .navbar__links.active {
+    display: flex;
+  }
+
+  .navbar__links li {
+    margin: 10px 0;
   }
 }

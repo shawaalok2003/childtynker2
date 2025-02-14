@@ -1,116 +1,201 @@
-/* Main container for the layout */
+/* Main Container */
 .pillars-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 50px;
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Left Side Text */
+.pillars-text {
+  flex: 1;
+  padding-right: 30px;
+  min-width: 300px;
+}
+
+.pillars-text h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.pillars-text .highlight {
+  color: #ff6f3c;
+  font-size: 3.2rem;
+}
+
+.pillars-text p {
+  font-size: 1.2rem;
+  color: #34495e;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #6a5acd;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: #483d8b;
+  transform: scale(1.05);
+}
+
+/* Circular Layout */
+.pillars-visual-circle {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.pillar-circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  padding: 10px;
+}
+
+/* Pillar Colors */
+.robotics {
+  background-color: #8e44ad;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.thinking {
+  background-color: #f1c40f;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+}
+
+.exploration {
+  background-color: #2ecc71;
+  bottom: 10%;
+  right: 25%;
+}
+
+.tech {
+  background-color: #e67e22;
+  bottom: 10%;
+  left: 25%;
+}
+
+.teamwork {
+  background-color: #3498db;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+}
+
+.center-text {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+/* Responsive Design */
+
+/* Large Screens (Desktops) */
+@media (min-width: 1024px) {
+  .pillars-container {
+    flex-direction: row;
   }
-  
-  /* Left side text styles */
-  .pillars-text {
-    flex: 1;
-    padding-right: 30px;
+
+  .pillars-visual-circle {
+    width: 500px;
+    height: 500px;
   }
-  
-  .pillars-text h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #2c3e50;
+
+  .pillar-circle {
+    width: 130px;
+    height: 130px;
   }
-  
-  .pillars-text .highlight {
-    color: #ff6f3c;
-    font-size: 3.2rem;
-  }
-  
-  .pillars-text p {
-    font-size: 1.2rem;
-    color: #34495e;
-    line-height: 1.8;
-    margin-bottom: 30px;
-  }
-  
-  .pillars-text .emphasis {
-    color: #ff6f3c;
-    font-weight: bold;
-  }
-  
-  .cta-button {
-    padding: 15px 30px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #ffffff;
-    background-color: #6a5acd;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .cta-button:hover {
-    background-color: #483d8b;
-    transform: scale(1.05);
-  }
-  
-  /* Right side pillars visual styles */
-  .pillars-visual {
-    display: flex;
+}
+
+/* Medium Screens (Tablets) */
+@media (max-width: 1024px) and (min-width: 600px) {
+  .pillars-container {
     flex-direction: column;
-    gap: 20px;
-    flex: 1;
   }
-  
-  .pillar {
-    display: flex;
-    align-items: center;
+
+  .pillars-visual-circle {
+    width: 400px;
+    height: 400px;
   }
-  
-  .pillar-number {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff;
-    border-radius: 50%;
-    margin-right: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+  .pillar-circle {
+    width: 110px;
+    height: 110px;
   }
-  
-  .pillar-text {
-    flex: 1;
-    padding: 15px 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #ffffff;
-    border-radius: 30px;
+
+  .pillars-text {
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 0;
   }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .pillars-container {
-      flex-direction: column;
-      padding: 20px;
-    }
-  
-    .pillars-text {
-      text-align: center;
-      padding-right: 0;
-      margin-bottom: 30px;
-    }
-  
-    .pillars-visual {
-      align-items: center;
-    }
-  
-    .pillar-text {
-      text-align: center;
-    }
+}
+
+/* Small Screens (Mobile) */
+@media (max-width: 599px) {
+  .pillars-container {
+    flex-direction: column;
+    padding: 20px;
   }
+
+  .pillars-visual-circle {
+    width: 300px;
+    height: 300px;
+  }
+
+  .pillar-circle {
+    width: 90px;
+    height: 90px;
+    font-size: 0.8rem;
+  }
+
+  .pillars-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .pillars-text p {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .center-text {
+    font-size: 1rem;
+  }
+}

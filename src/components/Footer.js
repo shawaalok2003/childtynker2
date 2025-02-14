@@ -19,8 +19,7 @@ const Footer = () => {
         <div style={{ flex: '1', marginBottom: '20px', minWidth: '220px' }}>
           <h3 style={{ fontSize: '20px', marginBottom: '15px', fontWeight: 'bold', color: '#FFCC00', textTransform: 'uppercase' }}>Company</h3>
           <ul style={{ listStyle: 'none', padding: '0', margin: '0' }}>
-            <li><Link to="/" style={linkStyle}>Home</Link></li>
-            <li><Link to="/about-us" style={linkStyle}>About Us</Link></li>
+            <li><Link to="/about" style={linkStyle}>About Us</Link></li>
           </ul>
         </div>
 

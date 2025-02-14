@@ -7,7 +7,7 @@ import ChildTynker from './components/About';
 import ChampsCarousel from './components/Testiomonial';
 import CourseCards from './components/CourseCards';
 import EducatorListPage from './components/EducatorListPage'; 
-import EducatorPage from './components/Educatordata';// Ensure this file exists
+import EducatorPage from './components/Educatordata';
 import FAQSection from './components/Faqsection';
 import PillarsSection from './components/Course';
 import Footer from './components/Footer';
@@ -30,39 +30,43 @@ import IOTMasterPackage from './components/Courses/IOTMasterPackage';
 import AIMLMasterPackage from './components/Courses/AIMLMasterPackage';
 import AchievementsSection from './components/AchievementsSection';
 import PaymentGenerator from './components/Courses/PaymentGenerator';
+import ScrollToTop from './components/ScrollToTop'; // Import ScrollToTop
 
 function App() {
   return (
     <Router>
+      <ScrollToTop /> {/* This ensures the page scrolls to top on route change */}
       <div>
         <Navbar />
         <Routes>
           <Route path="/" element={
             <>
-            <HeroSection />
-            <AchievementsSection/>
-            <ChildTynker />
-            <All/>
-            <ChampsCarousel />
-            <CourseCards />
-            <PillarsSection/>
-            <EducatorListPage/>
-            <FAQSection/>
-            <Footer/>
-            </>} />
-            <Route path="/about" element={
-              <>
+              <HeroSection />
+              <AchievementsSection/>
+              <ChildTynker />
+              <All/>
+              <ChampsCarousel />
+              <CourseCards />
+              <PillarsSection/>
+              <EducatorListPage/>
+              <FAQSection/>
+              <Footer/>
+            </>
+          } />
+          <Route path="/about" element={
+            <>
               <ChildTynker />
               <All/>
               <ChampsCarousel />
               <PillarsSection/>
               <FAQSection/>
               <Footer/>
-              </>} />
-            <Route path="/" element={<HeroSection />} />
-            <Route path="/register" element={<RegistrationPage />} />
-            <Route path="/select-course" element={<CourseSelectionPage />} />
-            <Route path="/booking" element={<BookingPage />} />
+            </>
+          } />
+          <Route path="/" element={<HeroSection />} />
+          <Route path="/register" element={<RegistrationPage />} />
+          <Route path="/select-course" element={<CourseSelectionPage />} />
+          <Route path="/booking" element={<BookingPage />} />
           <Route path="/refunds-and-cancellations" element={<RefundPolicy />} />
           <Route path="/terms" element={<TermsAndConditions/>} />
           <Route path="/privacy" element={<PrivacyPolicy/>} />
@@ -81,7 +85,6 @@ function App() {
           <Route path="/iot-master-package" element={<IOTMasterPackage/>} />
           <Route path="/aiml-master-package" element={<AIMLMasterPackage/>} /> 
           <Route path="/generate-payment" element={<PaymentGenerator/>} />
-          
         </Routes>
       </div>
     </Router>
