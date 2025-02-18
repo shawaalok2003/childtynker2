@@ -8,7 +8,19 @@ const educatorData = [
     id: 1,
     name: "Rashmee kansal",
     title: "15+ yrs  as a robotics trainer",
-    photo: "/images/Rashmee Kansal (2).png",
+    photo: "/images/Logo ChildTynker  (8).png",
+  },
+  {
+    id: 1,
+    name: "Ashley",
+    title: "YOE- 6+ (A Certified Global robotics Trainer )",
+    photo: "/images/Logo ChildTynker  (9).png",
+  },
+  {
+    id: 1,
+    name: "Salman Mamdapur ",
+    title: "YOE- 5+",
+    photo: "/images/Logo ChildTynker  (10).png",
   },
 ];
 
@@ -23,7 +35,6 @@ const EducatorListPage = () => {
             <div className="educator-info">
               <h2>{educator.name}</h2>
               <p>{educator.title}</p>
-              <Link to={`/educator/${educator.id}`}>View Profile</Link>
             </div>
           </div>
         ))}

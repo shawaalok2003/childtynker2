@@ -183,7 +183,8 @@ body {
 
   .navbar__logo img {
     height: 80px;
-    margin: 10px;
+    margin: 30px;
+    margin-top: 40px;
   }
 
   /* Mobile Menu */
