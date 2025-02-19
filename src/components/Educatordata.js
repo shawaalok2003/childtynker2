@@ -7,7 +7,7 @@ const educatorData = [
     id: 1,
     name: "Rashmee Kansal",
     title: "Robotics Trainer with 15+ Years of Experience",
-    photo: "/images/Rashmee Kansal (2).png",
+    photo: "/images/Logo ChildTynker  (8).png",
     bio: "Rashmee Kansal has over 15 years of experience as a dedicated robotics trainer. Her passion lies in empowering students to explore and innovate in the field of robotics and automation.",
     qualifications: [
       "Bachelor's in Electronics and Communication Engineering",
@@ -49,60 +49,90 @@ const educatorData = [
   },
   {
     id: 2,
-    name: "Jane Smith",
-    title: "Advanced Robotics Educator",
-    photo: "educator-photo-2.jpg",
-    bio: "Jane specializes in integrating robotics with AI and IoT to create real-world solutions for the tech-driven world.",
+    name: "Ashley",
+    title: "Certified Global Robotics Trainer with 6+ Years of Experience",
+    photo: "/images/Logo ChildTynker  (9).png",
+    bio: "Ashley is a passionate robotics educator with over 6 years of experience in training students globally. She specializes in teaching hands-on robotics, automation, and coding. Her expertise includes designing interactive learning experiences for students of all ages.",
     qualifications: [
-      "PhD in Robotics and AI",
-      "AI & Robotics Researcher",
-      "10+ Years of Industry and Teaching Experience"
+      "Bachelor’s in Computer Science and Robotics",
+      "Certified Global Robotics Trainer",
+      "Experience in AI-Integrated Robotics",
+      "Speaker at International STEM Conferences"
     ],
     courses: [
       {
-        title: "AI-Powered Robotics",
-        description: "An advanced course focused on using AI techniques to enhance robotics applications.",
+        title: "Foundations of Robotics",
+        description: "An introductory course covering the basics of robotics, including mechanical design and programming fundamentals.",
+        duration: "3 months"
+      },
+      {
+        title: "AI in Robotics",
+        description: "An advanced course that explores how artificial intelligence is applied in robotics.",
         duration: "5 months"
+      },
+      {
+        title: "Hands-On Robotics for Kids",
+        description: "A fun and engaging course designed for young learners to build and program simple robots.",
+        duration: "2 months"
       }
     ],
     testimonials: [
       {
-        text: "Jane's approach to teaching is incredibly engaging, and her industry experience adds so much value to the courses.",
-        author: "Alice M., Tech Enthusiast"
+        text: "Ashley’s way of teaching robotics is fun and interactive. She makes complex topics easy to understand.",
+        author: "Michael S., High School Student"
+      },
+      {
+        text: "With Ashley's guidance, I built my first AI-powered robot. She is a fantastic mentor!",
+        author: "Sarah T., University Student"
       }
     ],
     contact: {
-      email: "janesmith@example.com",
-      linkedin: "https://www.linkedin.com/in/janesmith"
+      email: "ashley@example.com",
+      linkedin: "https://www.linkedin.com/in/ashley"
     }
   },
   {
     id: 3,
-    name: "Emily Johnson",
-    title: "AI and Machine Learning Specialist",
-    photo: "educator-photo-3.jpg",
-    bio: "Emily has been at the forefront of AI and Machine Learning education, creating impactful learning experiences for students worldwide.",
+    name: "Salman Mamdapur",
+    title: "Robotics Trainer with 5+ Years of Experience",
+    photo: "/images/Logo ChildTynker  (10).png",
+    bio: "Salman Mamdapur is a dedicated robotics trainer with a strong background in automation and robotics engineering. With 5+ years of experience, he has trained students in building autonomous systems and developing AI-driven robots. His focus is on making robotics education accessible and practical.",
     qualifications: [
-      "Master's in Artificial Intelligence",
-      "Machine Learning Expert",
-      "Published Author in AI Education"
+      "Master’s in Robotics Engineering",
+      "Certified Automation and AI Specialist",
+      "5+ Years of Experience in Robotics Training",
+      "Trainer at Multiple Robotics Bootcamps"
     ],
     courses: [
       {
-        title: "Machine Learning Basics",
-        description: "A course designed to introduce students to the fundamentals of machine learning.",
+        title: "Autonomous Robotics",
+        description: "Learn to design and program autonomous robots using sensors and AI algorithms.",
         duration: "4 months"
+      },
+      {
+        title: "IoT and Robotics",
+        description: "Explore the integration of Internet of Things (IoT) with robotics for smart automation.",
+        duration: "3 months"
+      },
+      {
+        title: "Advanced Arduino Robotics",
+        description: "A hands-on course focused on developing robotics projects using Arduino.",
+        duration: "2 months"
       }
     ],
     testimonials: [
       {
-        text: "Emily has an incredible ability to make complex AI concepts easy to understand. Highly recommend her courses.",
-        author: "David P., Data Scientist"
+        text: "Salman’s deep knowledge of robotics helped me build complex projects with confidence.",
+        author: "Rohit K., Engineering Student"
+      },
+      {
+        text: "His IoT and Robotics course was incredibly insightful and practical.",
+        author: "Aisha M., Robotics Enthusiast"
       }
     ],
     contact: {
-      email: "emilyjohnson@example.com",
-      linkedin: "https://www.linkedin.com/in/emilyjohnson"
+      email: "salman.mamdapur@example.com",
+      linkedin: "https://www.linkedin.com/in/salmanmamdapur"
     }
   }
 ];
