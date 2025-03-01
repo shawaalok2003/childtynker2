@@ -86,10 +86,6 @@ const educatorData = [
         author: "Sarah T., University Student"
       }
     ],
-    contact: {
-      email: "ashley@example.com",
-      linkedin: "https://www.linkedin.com/in/ashley"
-    }
   },
   {
     id: 3,
@@ -130,10 +126,6 @@ const educatorData = [
         author: "Aisha M., Robotics Enthusiast"
       }
     ],
-    contact: {
-      email: "salman.mamdapur@example.com",
-      linkedin: "https://www.linkedin.com/in/salmanmamdapur"
-    }
   }
 ];
 

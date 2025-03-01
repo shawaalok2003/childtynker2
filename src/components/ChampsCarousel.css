@@ -127,7 +127,37 @@
   .cta-button:hover {
     background-color: #e66a00;
   }
-  
+  /* Trustpilot Widget Styling */
+.trustpilot-widget {
+  padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.trustpilot-widget:hover {
+  background-color: #000000;
+  border-color: #00b67a; /* Trustpilot green */
+  transform: scale(1.02);
+}
+
+/* Trustpilot Link Styling */
+.trustpilot-widget a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #00b67a; /* Trustpilot green */
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.trustpilot-widget a:hover {
+  color: #008a5e; /* Darker green on hover */
+}
   /* Responsive Styles */
   @media (max-width: 768px) {
     .champ-content {

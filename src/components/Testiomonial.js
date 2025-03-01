@@ -1,14 +1,14 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "./ChampsCarousel.css"; 
 import { FaHeart } from "react-icons/fa";
 
 const ChampsCarousel = () => {
-  const navigate = useNavigate(); // ✅ Initialize navigate function
+  const navigate = useNavigate();
 
   const handleBookingClick = () => {
-    navigate("/register"); // ✅ Redirect to registration page
+    navigate("/register");
   };
 
   const champs = [
@@ -44,8 +44,8 @@ const ChampsCarousel = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,        // ✅ Enable Auto-Slide
-    autoplaySpeed: 3000,   // ✅ Slide every 3s
+    autoplay: true,
+    autoplaySpeed: 3000,
     arrows: true,
   };
 
@@ -59,13 +59,16 @@ const ChampsCarousel = () => {
         {champs.map((champ) => (
           <div className="champ-card" key={champ.id}>
             <div className="champ-content">
+              
               {/* Left Section */}
               <div className="champ-info-section">
                 <div className="champ-avatar-container">
                   <img src={champ.image} alt={champ.name} className="champ-avatar" />
                 </div>
                 <div className="champ-details">
-                  <h3 className="champ-name">Hi 👋, I am <strong>{champ.name}</strong></h3>
+                  <h3 className="champ-name">
+                    Hi 👋, I am <strong>{champ.name}</strong>
+                  </h3>
                   <p className="champ-grade">I study in {champ.grade}</p>
                   <p className="champ-teaches">{champ.teaches}</p>
                   <h4 className="champ-title">{champ.title}</h4>
@@ -79,8 +82,13 @@ const ChampsCarousel = () => {
 
               {/* Right Section */}
               <div className="champ-project-section">
-                <img src={champ.projectImage} alt="Project showcase" className="champ-project-image" />
+                <img 
+                  src={champ.projectImage} 
+                  alt="Project showcase" 
+                  className="champ-project-image" 
+                />
               </div>
+              
             </div>
           </div>
         ))}
@@ -89,6 +97,18 @@ const ChampsCarousel = () => {
       <button className="hero__button" onClick={handleBookingClick}>
         Book Your First Free Class
       </button>
+      <div class="trustpilot-widget" 
+     data-locale="en-US" 
+     data-template-id="56278e9abfbbba0bdcd568bc" 
+     data-businessunit-id="67c3138311f3ffaeab09e239" 
+     data-style-height="52px" 
+     data-style-width="100%">
+  <a href="https://www.trustpilot.com/review/childtynker.com" 
+     target="_blank" 
+     rel="noopener">
+    Trustpilot
+  </a>
+</div>
     </div>
   );
 };
