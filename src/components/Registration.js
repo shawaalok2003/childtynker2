@@ -61,34 +61,7 @@ const RegistrationPage = () => {
           />
         </div>
 
-        <div className="form-group">
-          <label>Occupation:</label>
-          <input
-            type="text"
-            value={occupation}
-            onChange={(e) => setOccupation(e.target.value)}
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Relationship to Child:</label>
-          <input
-            type="text"
-            value={relationship}
-            onChange={(e) => setRelationship(e.target.value)}
-          />
-        </div>
-
-        {/* Child Details */}
-        <div className="form-group">
-          <label>Child's Name:</label>
-          <input
-            type="text"
-            value={childName}
-            onChange={(e) => setChildName(e.target.value)}
-            required
-          />
-        </div>
+        
 
         <div className="form-group">
           <label>Child's Age:</label>
@@ -112,14 +85,6 @@ const RegistrationPage = () => {
             <option value="Female">Female</option>
             <option value="Other">Other</option>
           </select>
-        </div>
-
-        <div className="form-group">
-          <label>Child's Interests:</label>
-          <textarea
-            value={childInterests}
-            onChange={(e) => setChildInterests(e.target.value)}
-          />
         </div>
 
         <button type="submit">Next</button>

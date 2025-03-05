@@ -199,7 +199,6 @@ const CourseSelectionPage = () => {
                   className="card"
                   onClick={() => handleCourseSelection(course)} // Click triggers selection and navigation
                 >
-                  <div className="icon">{course.icon}</div>
                   <h3 className="card-title">{course.title}</h3>
                   <h2 className="course-name">{course.name}</h2>
                   <p className="pricing">

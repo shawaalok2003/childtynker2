@@ -435,7 +435,6 @@ const CourseCards = () => {
           <div className="card-container">
             {ageGroup.courses.map((course, idx) => (
               <div key={idx} className="card">
-                <div className="icon">{course.icon}</div>
                 <h2 className="course-name">{course.name}</h2>
                 <p className="pricing">
                   <span className="new-price2">{formatUSD(course.newPrice2)}</span>

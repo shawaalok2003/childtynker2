@@ -34,7 +34,7 @@ body {
 
 /* Logo */
 .navbar__logo img {
-  height: 180px;
+  height: 120px;
   margin: 80px;
   margin-top: 100px;
 }
@@ -207,5 +207,76 @@ body {
 
   .navbar__links li {
     margin: 10px 0;
+  }
+}
+/* Floating Buttons - Initially Hidden */
+.floating-buttons {
+  position: fixed;
+  bottom: 20px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* Show Floating Buttons When Menu is Active */
+.navbar__links.active + .floating-buttons {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* WhatsApp Button */
+.floating-buttons .whatsapp-btn {
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-size: 24px;
+}
+
+/* Call Button */
+.floating-buttons .call-btn {
+  background-color: #007bff;
+  color: white;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+}
+
+.floating-buttons .call-btn i {
+  margin-right: 8px;
+  font-size: 22px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .floating-buttons {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .floating-buttons .whatsapp-btn {
+    margin-bottom: 10px;
+  }
+
+  .floating-buttons .call-btn {
+    font-size: 16px;
+    padding: 8px 16px;
   }
 }
