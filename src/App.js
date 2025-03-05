@@ -31,6 +31,8 @@ import AIMLMasterPackage from './components/Courses/AIMLMasterPackage';
 import AchievementsSection from './components/AchievementsSection';
 import PaymentGenerator from './components/Courses/PaymentGenerator';
 import ScrollToTop from './components/ScrollToTop'; // Import ScrollToTop
+import WhatWillKidReceive from './components/WhatWillKidReceive';
+import FeaturesCertificates from './components/FeaturesCertificates';
 
 function App() {
   return (
@@ -45,7 +47,9 @@ function App() {
               <AchievementsSection/>
               <CourseCards />
               <ChampsCarousel />
+              <FeaturesCertificates/>
               <PillarsSection/>
+              <WhatWillKidReceive/>
               <EducatorListPage/>
               <FAQSection/>
               <Footer/>

@@ -1,182 +1,268 @@
-/* General Styles */
 .carousel-container {
-    padding: 40px 20px;
-    text-align: center;
-    background-color: #f9f9f9;
-    font-family: "Arial", sans-serif;
-  }
-
-  .champ-card{
-    height: 80vh;
-  }
-  .carousel-title {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  
-  .carousel-title .highlight1 {
-    color:#93339e;
-    font-weight: bold;
-  }
-  
-  /* Carousel Card */
-  .champ-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    background-color: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-  }
-  
-  .champ-content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .champ-info-section {
-    flex: 1;
-    text-align: left;
-  }
-  
-  .champ-avatar-container {
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  .champ-avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #ff7a00;
-  }
-  
-  .champ-details .champ-name {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 5px;
-  }
-  
-  .champ-details .champ-grade {
-    font-size: 1rem;
-    color: #777;
-  }
-  
-  .champ-details .champ-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #ff7a00;
-    margin-top: 10px;
-  }
-  
-  .champ-details .champ-description {
-    margin-top: 10px;
-    color: #555;
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-  
-  .champ-likes {
-    display: flex;
-    align-items: center;
-    color: #ff7a00;
-    font-size: 1rem;
-    margin-top: 10px;
-  }
-  
-  .heart-icon {
-    margin-right: 5px;
-  }
-  
-  /* Right Section */
-  .champ-project-section {
-    flex: 1;
-    text-align: center;
-  }
-  
-  .champ-project-image {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 10px;
-  }
-  
-  /* CTA Button */
-  .cta-container {
-    margin-top: 30px;
-  }
-  
-  .cta-button {
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #fff;
-    background-color: #ff7a00;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .cta-button:hover {
-    background-color: #e66a00;
-  }
-  /* Trustpilot Widget Styling */
-.trustpilot-widget {
-  padding: 10px 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+  font-family: "Arial", sans-serif;
+  overflow: hidden;
 }
 
-/* Hover Effect */
-.trustpilot-widget:hover {
-  background-color: #000000;
-  border-color: #00b67a; /* Trustpilot green */
-  transform: scale(1.02);
+/* Title Styling */
+.carousel-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #333;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+  animation: fadeInDown 1s ease-in-out;
 }
 
-/* Trustpilot Link Styling */
-.trustpilot-widget a {
-  text-decoration: none;
+.carousel-title::after {
+  content: "";
+  width: 60%;
+  height: 4px;
+  background: #93339e;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* Parent Testimonials Section */
+.testimonials-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.testimonial-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 320px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-feedback {
+  font-style: italic;
+  color: #555;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.testimonial-name {
+  margin-top: 10px;
   font-weight: bold;
-  color: #00b67a; /* Trustpilot green */
-  font-size: 16px;
-  transition: color 0.3s;
+  color: #93339e;
+  animation: fadeIn 1.2s ease-in-out;
 }
 
-.trustpilot-widget a:hover {
-  color: #008a5e; /* Darker green on hover */
+/* Tech Leaders Section */
+.tech-leaders-intro {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 30px;
+  animation: fadeIn 1.2s ease-in-out;
 }
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .champ-content {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .champ-details {
-      text-align: center;
-    }
-  
-    .champ-avatar {
-      width: 100px;
-      height: 100px;
-    }
-  
-    .champ-project-image {
-      width: 100%;
-      max-width: 300px;
-      height: 100px;
-    }
+
+/* Champion Cards */
+.champ-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.champ-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.champ-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  animation: slideInLeft 1s ease-in-out;
+}
+
+/* Avatar Image */
+.champ-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ff7a00;
+  transition: transform 0.3s ease-in-out;
+}
+
+.champ-avatar:hover {
+  transform: rotate(5deg) scale(1.05);
+}
+
+/* Project Image */
+.champ-project-image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.champ-project-image:hover {
+  transform: scale(1.05);
+}
+
+/* Button Styling */
+.hero__button {
+  background: linear-gradient(45deg, #ff7a00, #ff4f00);
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-top: 20px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.hero__button:hover {
+  background: linear-gradient(45deg, #ff4f00, #ff2e00);
+  transform: scale(1.05);
+}
+
+/* Responsive - Tablets */
+@media (max-width: 1024px) {
+  .carousel-title {
+    font-size: 2rem;
   }
+
+  .testimonials-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .testimonial-card {
+    max-width: 280px;
+  }
+
+  .champ-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .champ-avatar {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Responsive - Mobile Devices */
+@media (max-width: 768px) {
+  .carousel-title {
+    font-size: 1.8rem;
+  }
+
+  .testimonials-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testimonial-card {
+    max-width: 90%;
+  }
+
+  .champ-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .champ-avatar {
+    width: 90px;
+    height: 90px;
+  }
+
+  .hero__button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
+/* Responsive - Small Mobile Devices */
+@media (max-width: 480px) {
+  .carousel-title {
+    font-size: 1.5rem;
+  }
+
+  .testimonial-card {
+    padding: 15px;
+    max-width: 95%;
+  }
+
+  .champ-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .hero__button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
