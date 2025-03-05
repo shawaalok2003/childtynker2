@@ -47,7 +47,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar__top-banner" style={{ backgroundColor: 'green', color: 'white', textAlign: 'center', padding: '5px', fontSize: '14px' }}>
         <span>1:1 live Robotics classes by IIT/NIT Trainers </span>
-        <NavLink to="/booking">
+        <NavLink to="/register">
           <button className="top-banner__button" style={{ background: 'white', color: 'black', border: 'none', padding: '5px 10px', marginLeft: '10px', cursor: 'pointer', borderRadius: '5px' }}>Book Now</button>
         </NavLink>
       </div>

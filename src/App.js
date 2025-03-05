@@ -43,10 +43,8 @@ function App() {
             <>
               <HeroSection />
               <AchievementsSection/>
-              <ChildTynker />
-              <All/>
-              <ChampsCarousel />
               <CourseCards />
+              <ChampsCarousel />
               <PillarsSection/>
               <EducatorListPage/>
               <FAQSection/>
