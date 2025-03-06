@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Navbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -73,13 +74,13 @@ const Navbar = () => {
 
       {/* Floating WhatsApp & Call Buttons */}
       <div className={`floating-buttons ${isMobileMenuOpen ? 'active' : ''}`}>
-        <a href="https://wa.me/1234567890" className="whatsapp-btn" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-whatsapp"></i>
-        </a>
-        <a href="tel:+1234567890" className="call-btn">
-          <i className="fas fa-phone-alt"></i> Call Now
-        </a>
-      </div>
+  <a href="https://wa.me/08069641194" className="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+    <i className="fab fa-whatsapp"></i>
+  </a>
+  <a href="tel:08069641194" className="call-btn">
+    <i className="fas fa-phone-alt"></i>
+  </a>
+</div>
     </nav>
   );
 };

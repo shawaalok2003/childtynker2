@@ -47,7 +47,7 @@ const RegistrationPage = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
+
           />
         </div>
 
@@ -64,14 +64,15 @@ const RegistrationPage = () => {
         
 
         <div className="form-group">
-          <label>Child's Age:</label>
+          <label>Child Name:</label>
           <input
-            type="number"
-            value={childAge}
-            onChange={(e) => setChildAge(e.target.value)}
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
         </div>
+
 
         <div className="form-group">
           <label>Child's Gender:</label>

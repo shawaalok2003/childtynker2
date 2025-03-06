@@ -133,3 +133,27 @@
     width: 80px;
   }
 }
+
+
+.top-info div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.top-info img {
+  width: 100px;/* Adjust size as needed */
+  height: 100px;
+  object-fit: contain;
+}
+
+.new {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.top-info p {
+  font-size: 16px;
+  color: #555;
+}

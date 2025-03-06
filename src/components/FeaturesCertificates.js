@@ -39,23 +39,39 @@ const FeaturesCertificates = () => {
         </div>
       </section>
 
-      <section className="certificates">
-        <h2 className="title">CERTIFICATES</h2>
-        <div className="certificate-card">
-          <h3 className="certificate-title">Junior IOT Engineer</h3>
-          <h2 className="certificate-name">Isabel Mercado</h2>
-          <p className="certificate-text">
-            In recognition of triumphant completion of the curiosity course
-            <br />
-            <span className="highlight">
-              (Certified Expertise in Internet of Things)
-            </span>
-          </p>
-          <p className="certificate-date">27th July 2024</p>
-          <p className="certificate-director">Sanjeev, Director</p>
-          <p className="certificate-tag">#startupindia</p>
-        </div>
-      </section>
+      <section
+  style={{
+    textAlign: "center",
+    padding: "20px",
+    backgroundColor: "#f9f9f9",
+    fontFamily: "Arial, sans-serif",
+  }}
+>
+  <h2 style={{ fontSize: "24px", fontWeight: "bold", color: "#333" }}>
+    CERTIFICATES
+  </h2>
+  <div
+    style={{
+      maxWidth: "500px",
+      margin: "20px auto",
+      padding: "15px",
+      borderRadius: "10px",
+      backgroundColor: "#fff",
+      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+      textAlign: "left",
+    }}
+  >
+    <img
+      src="/images/Image Gallery-20250306T121018Z-001/Image Gallery/Sample Certificate (1).png"
+      alt="Certificate"
+      style={{
+        width: "100%",
+        borderRadius: "8px",
+        marginBottom: "15px",
+      }}
+    />
+  </div>
+</section>
     </div>
   );
 };
