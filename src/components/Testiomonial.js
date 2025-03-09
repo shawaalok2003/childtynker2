@@ -10,7 +10,6 @@ const ChampsCarousel = () => {
   const handleBookingClick = () => {
     navigate("/register");
   };
-
   const champs = [
     {
       id: 1,
@@ -39,24 +38,19 @@ const ChampsCarousel = () => {
   ];
   const testimonials = [
     {
+      image: "/images/Image Gallery-20250306T121018Z-001/Image Gallery/Amlan Kumar Sengupta Professor IIT  Madras.png", 
       id: 1,
       name: "Amlan Kumar Sengupta",
       designation: "Professor, IIT Madras",
       feedback:
         "Over the past six months, more than 100 students from IIT Madras actively participated in a 6-hour aeromodelling workshop conducted in the engaging 'design-build-fly' format.",
     },
-    {
+    { image: "/images/Image Gallery-20250306T121018Z-001/Image Gallery/Tanushree Parents.png",
       id: 2,
       name: "Tanushree",
       designation: "Parent",
       feedback:
         "Initially, I thought Robotics for kids was just a gimmicky advertisement. However, after attending the free session, I realized how effective it is in unlocking my daughter's potential. I was so impressed that I even referred three of my colleagues!",
-    },
-    {
-      id: 3,
-      name: "Amit Sharma",
-      feedback:
-        "ChildTynker has transformed my child's learning experience! The courses are engaging and interactive.",
     },
   ];
   const settings = {
@@ -77,8 +71,10 @@ const ChampsCarousel = () => {
       <div className="testimonials-container">
         {testimonials.map((testimonial) => (
           <div key={testimonial.id} className="testimonial-card">
+          <img src={testimonial.image} alt="image" className="image"/>
             <p className="testimonial-feedback">"{testimonial.feedback}"</p>
             <h4 className="testimonial-name">- {testimonial.name}</h4>
+            <h4 className="testimonial-name">- {testimonial.designation}</h4>
           </div>
         ))}
       </div>

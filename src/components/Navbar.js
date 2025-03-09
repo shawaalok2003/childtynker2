@@ -77,7 +77,7 @@ const Navbar = () => {
   <a href="https://wa.me/08069641194" className="whatsapp-btn" target="_blank" rel="noopener noreferrer">
     <i className="fab fa-whatsapp"></i>
   </a>
-  <a href="tel:08069641194" className="call-btn">
+  <a href="tel:+91 8069641194" className="call-btn">
     <i className="fas fa-phone-alt"></i>
   </a>
 </div>
