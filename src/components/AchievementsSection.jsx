@@ -28,39 +28,61 @@ const AchievementsSection = () => {
       {/* Achievements Details Section */}
       <div className="achievements-details">
         <div className="achievement-card">
+        <h3 style={{
+          backgroundColor: "#93339e",
+          color: "white",
+          padding: "10px ",
+          borderRadius: "10px",
+          fontSize: "18px",
+          fontWeight: "bold",
+          display: "inline-block",
+         
+        }}>
+          Product built by an Alumni of
+        </h3>
           <div className="logos">
-            <img src="/images/awards.png" alt="Microsoft Award" />
+            <img src="/images/Group 13.png" alt="Microsoft Award" />
+          </div>
+        </div>
+        
+        <div className="achievement-card">
+        <h3 style={{
+          backgroundColor: "#93339e",
+          color: "white",
+          padding: "10px ",
+          borderRadius: "10px",
+          fontSize: "18px",
+          fontWeight: "bold",
+          display: "inline-block",
+         
+        }}>
+          Awards
+        </h3>
+          <div className="logos">
+            <img src="/images/AWARDES & ACCOLADES (1).png" alt="India Book of Records" />
           </div>
         </div>
         <div className="achievement-card">
+        <h3 style={{
+          backgroundColor: "#93339e",
+          color: "white",
+          padding: "10px ",
+          borderRadius: "10px",
+          fontSize: "18px",
+          fontWeight: "bold",
+          display: "inline-block",
+         
+        }}>
+        Accredited by
+        </h3>
           <div className="logos">
-            <img src="/images/build.png" alt="India Book of Records" />
-          </div>
-        </div>
-        <div className="achievement-card">
-          <div className="logos">
-            <img src="/images/stem.org.png" alt="STEM.org Certified" />
+            <img src="/images/ACCREDITED BY (1).png" alt="STEM.org Certified" />
           </div>
         </div>
       </div>
 
       {/* Product Built by an Alumni */}
-      <div className="alumni-info">
-        <h3>Product built by an Alumni</h3>
-        <p> IIT Delhi, NIT Jalandhar</p>
-        <p> Company</p>
-        <img src="/images/WhatsApp Image 2025-03-09 at 15.06.34.jpeg" alt="DPIIT Certificate" />
-        <img src="/images/WhatsApp Image 2025-03-09 at 15.07.52.jpeg" alt="NITI Aayog" />
       </div>
-
-      {/* Recognized by Section */}
-      <div className="recognized-by">
-        <h3>Recognized by</h3>
-        <div className="recognition-logos">
-          <img src="/images/Screenshot 2025-03-10 001909.png" alt="DPIIT Certificate" />
-        </div>
-      </div>
-    </div>
   );
 };
 
