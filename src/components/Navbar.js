@@ -74,7 +74,7 @@ const Navbar = () => {
 
       {/* Floating WhatsApp & Call Buttons */}
       <div className={`floating-buttons ${isMobileMenuOpen ? 'active' : ''}`}>
-  <a href="https://wa.me/08069641194" className="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+  <a href="https://wa.me/+918069641194" className="whatsapp-btn" target="_blank" rel="noopener noreferrer">
     <i className="fab fa-whatsapp"></i>
   </a>
   <a href="tel:+91 8069641194" className="call-btn">
