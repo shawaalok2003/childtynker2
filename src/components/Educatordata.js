@@ -181,16 +181,23 @@ const EducatorPage = () => {
           </div>
         ))}
       </section>
-
-      <section className="contact-section">
-        <h2 className="section-title">Contact</h2>
-        <p className="contact-info">
-          Email: <a href={`mailto:${educator.contact.email}`}>{educator.contact.email}</a>
-        </p>
-        <p className="contact-info">
-          LinkedIn: <a href={educator.contact.linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/{educator.name.toLowerCase().replace(' ', '')}</a>
-        </p>
-      </section>
+      {educator.contact && (
+        <section className="contact-section">
+          <h2 className="section-title">Contact</h2>
+          {educator.contact.email && (
+            <p className="contact-info">
+              Email: <a href={`mailto:${educator.contact.email}`}>{educator.contact.email}</a>
+            </p>
+          )}
+          {educator.contact.linkedin && (
+            <p className="contact-info">
+              LinkedIn: <a href={educator.contact.linkedin} target="_blank" rel="noopener noreferrer">
+                linkedin.com/in/{educator.name.toLowerCase().replace(' ', '')}
+              </a>
+            </p>
+          )}
+        </section>
+      )}
     </div>
   );
 };

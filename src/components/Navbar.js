@@ -51,7 +51,10 @@ const Navbar = () => {
         <button className="navbar__toggle" onClick={toggleMobileMenu}>☰</button>
         <ul className={`navbar__links ${isMobileMenuOpen ? 'active' : ''}`}>
           <li><NavLink to="/" onClick={() => setMobileMenuOpen(false)}>Home</NavLink></li>
-          <li><NavLink to="/about" onClick={() => setMobileMenuOpen(false)}>About us</NavLink></li>
+          <li><NavLink to="/about" onClick={() => setMobileMenuOpen(false)}>About Us</NavLink></li>
+          <li><NavLink to="/milestones" onClick={() => setMobileMenuOpen(false)}>Milestones</NavLink></li>
+          <li><NavLink to="/key-features" onClick={() => setMobileMenuOpen(false)}>Key Features</NavLink></li>
+          <li><NavLink to="/our-products" onClick={() => setMobileMenuOpen(false)}>Our Products</NavLink></li>
           <li className="navbar__item navbar__dropdown" onMouseEnter={toggleDropdownMenu} onMouseLeave={toggleDropdownMenu}>
             <span className="dropdown-toggle">Courses</span>
             <ul className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
@@ -64,6 +67,8 @@ const Navbar = () => {
               <li><NavLink to="/aiml-master-package" onClick={() => setMobileMenuOpen(false)}>AI/ML Master Package</NavLink></li>
             </ul>
           </li>
+          <li><NavLink to="/our-partners" onClick={() => setMobileMenuOpen(false)}>Our Partners</NavLink></li>
+          <li><NavLink to="/testimonials" onClick={() => setMobileMenuOpen(false)}>Testimonials</NavLink></li>
         </ul>
         <div className="navbar__actions">
           <NavLink to="/contact">

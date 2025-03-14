@@ -33,6 +33,8 @@ import PaymentGenerator from './components/Courses/PaymentGenerator';
 import ScrollToTop from './components/ScrollToTop'; // Import ScrollToTop
 import WhatWillKidReceive from './components/WhatWillKidReceive';
 import FeaturesCertificates from './components/FeaturesCertificates';
+import Chatbot from './components/Chatbot';
+import SchoolGallery from './components/Gallery';
 
 function App() {
   return (
@@ -44,6 +46,7 @@ function App() {
           <Route path="/" element={
             <>
               <HeroSection />
+              <Chatbot/>
               <AchievementsSection/>
               <CourseCards />
               <ChampsCarousel />
@@ -53,6 +56,34 @@ function App() {
               <EducatorListPage/>
               <FAQSection/>
               <Footer/>
+            </>
+          } />
+          <Route path="/milestones" element={
+            <>
+            <Chatbot/>
+            <AchievementsSection/>
+            <Footer/>
+            </>
+          } />
+          <Route path="/key-features" element={
+            <>
+            <WhatWillKidReceive/>
+            <Footer/>
+            </>
+          } />
+          <Route path="/our-products" element={
+            <>
+            <CourseCards />
+            </>
+          } />
+          <Route path="/our-partners" element={
+            <>
+            <SchoolGallery/>
+            </>
+          } />
+          <Route path="/testimonials" element={
+            <>
+           <ChampsCarousel/>
             </>
           } />
           <Route path="/about" element={
@@ -65,6 +96,8 @@ function App() {
               <Footer/>
             </>
           } />
+          <Route path="/" element={<EducatorListPage />} />
+          <Route path="/educator/:id" element={<EducatorPage />} />
           <Route path="/" element={<HeroSection />} />
           <Route path="/register" element={<RegistrationPage />} />
           <Route path="/select-course" element={<CourseSelectionPage />} />
