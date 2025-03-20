@@ -3,39 +3,48 @@ import React from 'react';
 const ContactPage = () => {
   const containerStyle = {
     maxWidth: '600px',
-    margin: '0 auto',
-    padding: '20px',
+    margin: '40px auto',
+    padding: '30px',
     textAlign: 'center',
-    backgroundColor: '#f9f9f9',
-    borderRadius: '8px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    backgroundColor: '#ffffff',
+    borderRadius: '12px',
+    boxShadow: '0 6px 12px rgba(0, 0, 0, 0.1)',
+    fontFamily: 'Arial, sans-serif',
   };
 
   const headingStyle = {
-    fontSize: '2em',
-    color: '#333',
+    fontSize: '2.2em',
+    color: '#007BFF',
     marginBottom: '20px',
+    fontWeight: 'bold',
   };
 
   const infoStyle = {
-    fontSize: '1.1em',
-    color: '#555',
-    marginBottom: '30px',
+    fontSize: '1.2em',
+    color: '#444',
+    marginBottom: '25px',
+    lineHeight: '1.6',
   };
 
   const detailsStyle = {
-    fontSize: '1.2em',
+    fontSize: '1.3em',
     color: '#333',
+    lineHeight: '1.6',
   };
+
   const itemStyle = {
     marginBottom: '15px',
+    fontWeight: 'bold',
   };
+
   const strongStyle = {
     color: '#000',
   };
+
   const linkStyle = {
     color: '#007BFF',
     textDecoration: 'none',
+    fontWeight: 'bold',
   };
 
   const linkHoverStyle = {
@@ -46,19 +55,18 @@ const ContactPage = () => {
     <div style={containerStyle}>
       <h1 style={headingStyle}>Contact Us</h1>
       <p style={infoStyle}>
-        If you have any additional questions or would like to request a refund, feel free to contact us.
+        If you have any additional questions, feel free to contact us.
       </p>
       <div style={detailsStyle}>
         <p style={itemStyle}>
-          <strong style={strongStyle}>Mob:</strong>+91 96118 28173
+          <strong style={strongStyle}>Mobile:</strong> +91 80 6964 1194
         </p>
         <p style={itemStyle}>
-          <strong style={strongStyle}>Location:</strong>Hustle Hub Tech Park, HSR-02, Bengaluru-560102
-          </p>
-          <p>
-          <strong style={strongStyle}>Location:</strong>500 Terry Francine St. San Francisco, CA 94158
-          
-          </p>
+          <strong style={strongStyle}>Office:</strong> Hustle Hub Tech Park, HSR-02, Bengaluru-560102
+        </p>
+        <p style={itemStyle}>
+          <strong style={strongStyle}>Office:</strong> 500 Terry Francine St., San Francisco, CA 94158
+        </p>
         <p style={itemStyle}>
           <strong style={strongStyle}>Email:</strong> 
           <a href="mailto:support@childtynker.com" style={linkStyle}>

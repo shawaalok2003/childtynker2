@@ -41,7 +41,7 @@ const AchievementsSection = () => {
           Product built by an Alumni of
         </h3>
           <div className="logos">
-            <img src="/images/Group 13.png" alt="Microsoft Award" />
+            <img src="/images/Group 13 .png" alt="Microsoft Award" />
           </div>
         </div>
         
