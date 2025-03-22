@@ -9,7 +9,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #FAF8F0; /* Base color */
 }
-
 h1 {
   font-family: 'Baloo 2', sans-serif;
   font-weight: 600;
@@ -28,7 +27,6 @@ p {
   font-weight: 400;
 
 }
-
 button {
   font-family: 'Baloo 2', sans-serif;
   border: none;

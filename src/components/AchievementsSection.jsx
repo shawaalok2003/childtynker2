@@ -45,7 +45,7 @@ const AchievementsSection = () => {
           </div>
         </div>
         
-        <div className="achievement-card">
+        <div className="achievement-card1">
         <h3 style={{
           backgroundColor: "#93339e",
           color: "white",
@@ -58,7 +58,7 @@ const AchievementsSection = () => {
         }}>
           Awards
         </h3>
-          <div className="logos">
+          <div className="logos1">
             <img src="/images/AWARDES & ACCOLADES.png" alt="India Book of Records" />
           </div>
         </div>
@@ -76,7 +76,7 @@ const AchievementsSection = () => {
         Accredited by
         </h3>
           <div className="logos">
-            <img src="/images/ACCREDITED BY (1).png" alt="STEM.org Certified" />
+            <img src="/images/ACCREDITED BY.png" alt="STEM.org Certified" />
           </div>
         </div>
       </div>

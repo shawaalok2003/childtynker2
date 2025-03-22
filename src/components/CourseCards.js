@@ -215,12 +215,12 @@ import "./CourseCards.css";
 
 const CourseCards = () => {
   const exchangeRate = 0.012; // Assuming 1 INR = 0.012 USD (This can be updated with real-time rates)
-
   const ageCourses = [
     {
       age: "3+",
       courses: [
-        {
+        { 
+          image: "/images/Image Gallery-20250306T121018Z-001/Image Gallery/Course age wise/WiseChild2-Elementary.png",
           title: "WiseChild Package",
           name: "WiseChild Package Elementary",
           oldPrice: 38399,
@@ -238,6 +238,7 @@ const CourseCards = () => {
             "https://drive.google.com/file/d/1rRzLrrjf3JKkM-bfA2XzURJLd-TMtDOB/view",
         },
         {
+          image: "/images/Image Gallery-20250306T121018Z-001/Image Gallery/Course age wise/WiseChild2-Intermediate.png",
           title: "WiseChild Package",
           name: "WiseChild Package Intermediate",
           oldPrice: 70399,
@@ -255,6 +256,7 @@ const CourseCards = () => {
             "https://drive.google.com/file/d/1rRzLrrjf3JKkM-bfA2XzURJLd-TMtDOB/view",
         },
         {
+          image: "/images/Image Gallery-20250306T121018Z-001/Image Gallery/Course age wise/WiseChild2-Adavanced.png",
           title: "WiseChild Package",
           name: "WiseChild Package Advanced",
           oldPrice: 95999,
@@ -277,8 +279,9 @@ const CourseCards = () => {
       age: "6+",
       courses: [
         {
+          image: "/images/Image Gallery-20250306T121018Z-001/Image Gallery/Course age wise/Alpha Set A.png",
           title: "Alpha Series Package",
-          name: "Alpha A, B, C, X, Starter, Adventurer",
+          name: "Alpha A",
           oldPrice: 38399,
           newPrice: 38399,
           newPrice2: 38399 * exchangeRate, // Converting INR to USD
@@ -294,8 +297,9 @@ const CourseCards = () => {
             "https://drive.google.com/file/d/1f0D3dsAIOrAY-mEr7JZj41B11cEkvA92/view",
         },
         {
+          image: "/images/Image Gallery-20250306T121018Z-001/Image Gallery/Course age wise/Alpha Set B.png",
           title: "Alpha Series Package",
-          name: "Alpha A, B, C, X, Starter, Adventurer",
+          name: "Alpha B",
           oldPrice: 70399,
           newPrice: 70399,
           newPrice2: 70399 * exchangeRate, // Converting INR to USD
@@ -311,11 +315,29 @@ const CourseCards = () => {
             "https://www.youtube.com/watch?v=E_fLelCZLbM&t=7s",
         },
         {
+          image: "/images/Image Gallery-20250306T121018Z-001/Image Gallery/Course age wise/Alpha Set C.png",
           title: "Alpha Series Package",
-          name: "Alpha A, B, C, X, Starter, Adventurer",
+          name: "Alpha C",
           oldPrice: 95999,
           newPrice: 95999,
           newPrice2: 95999 * exchangeRate, // Converting INR to USD
+          sessions: "96 Classes / 96+ Projects",
+          modules: [
+            "BIS Certified Kit",
+            "1:1 Live Classes by IIT/NIT Experts",
+            "STEM.org Accreditation",
+          ],
+          certificate: "Duration: 9 months",
+          icon: "🚀",
+          videoLink: "https://www.youtube.com/watch?v=pO_qDfi5BgA",
+        },
+        {
+          image: "/images/Image Gallery-20250306T121018Z-001/Image Gallery/Course age wise/Alpha Set X.png",
+          title: "Alpha Series Package",
+          name: "Alpha X",
+          oldPrice: 95999,
+          newPrice: 95999,
+          newPrice2: 105999 * exchangeRate, // Converting INR to USD
           sessions: "96 Classes / 96+ Projects",
           modules: [
             "BIS Certified Kit",
@@ -435,6 +457,7 @@ const CourseCards = () => {
           <div className="card-container">
             {ageGroup.courses.map((course, idx) => (
               <div key={idx} className="card">
+              <img src={course.image} alt={course.name} className="course-image" />
                 <h2 className="course-name">{course.name}</h2>
                 <p className="pricing">
                   <span className="new-price2">{formatUSD(course.newPrice2)}</span>

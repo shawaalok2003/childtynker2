@@ -8,6 +8,7 @@ const CourseSelectionPage = () => {
       age: "3+",
       courses: [
         {
+          image: "/images/Image Gallery-20250306T121018Z-001/Image Gallery/Course age wise/WiseChild2-Elementary.png",
           title: "Curriculum L1",
           name: "Enlightened",
           oldPrice: "₹20.00K",
@@ -23,6 +24,7 @@ const CourseSelectionPage = () => {
       age: "5+",
       courses: [
         {
+          image: "",
           title: "Curriculum L2",
           name: "Entry Alpha A",
           oldPrice: "₹22.00K",
@@ -33,6 +35,7 @@ const CourseSelectionPage = () => {
           icon: "🐣",
         },
         {
+          image: "",
           title: "Curriculum L3",
           name: "Entry Alpha B",
           oldPrice: "₹22.00K",
@@ -43,6 +46,7 @@ const CourseSelectionPage = () => {
           icon: "🐤",
         },
         {
+          image: "",
           title: "Curriculum L4",
           name: "Basic Alpha C",
           oldPrice: "₹24.00K",
@@ -58,6 +62,7 @@ const CourseSelectionPage = () => {
       age: "6+",
       courses: [
         {
+          image: "",
           title: "Curriculum L5",
           name: "Basic Alpha X Starter Combined",
           oldPrice: "₹26.00K",
@@ -73,6 +78,7 @@ const CourseSelectionPage = () => {
       age: "7+",
       courses: [
         {
+          image: "",
           title: "Curriculum L6",
           name: "Strengthened Pioneer 1",
           oldPrice: "₹30.00K",
@@ -88,6 +94,7 @@ const CourseSelectionPage = () => {
       age: "9+",
       courses: [
         {
+          image: "",
           title: "Curriculum L7",
           name: "Advanced Pioneer 2 Arduino",
           oldPrice: "₹35.00K",
@@ -103,6 +110,7 @@ const CourseSelectionPage = () => {
       age: "10+",
       courses: [
         {
+          image: "",
           title: "Curriculum L8",
           name: "Innovative AI/IOT Defender",
           oldPrice: "₹40.00K",
@@ -118,6 +126,7 @@ const CourseSelectionPage = () => {
       age: "12+",
       courses: [
         {
+          image:"",
           title: "Curriculum L8",
           name: "Innovative WiseLand Robotics",
           oldPrice: "₹42.00K",
@@ -133,6 +142,7 @@ const CourseSelectionPage = () => {
       age: "16+",
       courses: [
         {
+          image: "",
           title: "Curriculum L8",
           name: "Innovative ROS Robotics",
           oldPrice: "₹50.00K",
@@ -145,7 +155,6 @@ const CourseSelectionPage = () => {
       ],
     },
   ];
-
   const [selectedAge, setSelectedAge] = useState("3+");
   const navigate = useNavigate(); // Hook for navigation
 
@@ -157,7 +166,6 @@ const CourseSelectionPage = () => {
 
   // Handle course selection and navigate directly to booking
   const handleCourseSelection = (course) => {
-    // Navigate directly to the booking page with the selected course
     navigate("/booking", { state: { selectedCourse: course } });
   };
 
@@ -184,37 +192,40 @@ const CourseSelectionPage = () => {
           )}
         </select>
       </div>
-
       {/* Render filtered courses */}
       <div className="course-options">
         {filteredCourses.map((ageGroup, index) => (
           <div key={index} className="age-group">
             <h2 className="header-text">
-              Suitable for children aged <span className="highlight">{ageGroup.age}</span>
+              Suitable for children aged{" "}
+              <span className="highlight">{ageGroup.age}</span>
             </h2>
             <div className="card-container">
               {ageGroup.courses.map((course, idx) => (
                 <div
                   key={idx}
                   className="card"
-                  onClick={() => handleCourseSelection(course)} // Click triggers selection and navigation
+                  onClick={() => handleCourseSelection(course)}
                 >
-                  <h3 className="card-title">{course.title}</h3>
-                  <h2 className="course-name">{course.name}</h2>
-                  <p className="pricing">
-                    <span className="old-price">{course.oldPrice}</span>
-                    <span className="new-price">{course.newPrice}</span>
-                  </p>
-                  <p className="sessions">{course.sessions}</p>
-                  <h4>Modules in this course:</h4>
-                  <ul>
-                    {course.modules.map((module, idx) => (
-                      <li key={idx} className="module">
-                        {module}
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="certificate">{course.certificate}</p>
+                  <img src={course.image} alt={course.name} className="course-image" />
+                  <div className="card-content">
+                    <h3 className="card-title">{course.title}</h3>
+                    <h2 className="course-name">{course.name}</h2>
+                    <p className="pricing">
+                      <span className="old-price">{course.oldPrice}</span>
+                      <span className="new-price">{course.newPrice}</span>
+                    </p>
+                    <p className="sessions">{course.sessions}</p>
+                    <h4>Modules in this course:</h4>
+                    <ul>
+                      {course.modules.map((module, idx) => (
+                        <li key={idx} className="module">
+                          {module}
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="certificate">{course.certificate}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -224,5 +235,4 @@ const CourseSelectionPage = () => {
     </div>
   );
 };
-
 export default CourseSelectionPage;

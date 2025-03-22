@@ -38,7 +38,61 @@
   margin-bottom: 40px;
   flex-wrap: wrap;
 }
+/* Child Styling for Carousel */
+.carousel-container > * {
+  color: #444;
+  margin-bottom: 10px;
+}
 
+/* Child Styling for Title */
+.carousel-title span {
+  color: #ff7a00;
+  font-weight: bold;
+}
+
+/* Child Styling for Testimonials */
+.testimonial-card .testimonial-feedback {
+  color: #777;
+  font-size: 1rem;
+}
+
+.testimonial-card .testimonial-name {
+  color: #93339e;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Child Styling for Champions */
+.champ-card .champ-info-section h3 {
+  color: #ff7a00;
+  font-size: 1.5rem;
+}
+
+.champ-card .champ-info-section p {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Child Styling for Button */
+.hero__button span {
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Child Styling for Images */
+.image {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 3px solid #93339e;
+}
+
+.image:hover {
+  transform: scale(1.05);
+  border-color: #ff7a00;
+  transition: 0.3s ease-in-out;
+}
 .testimonial-card {
   background: #fff;
   padding: 20px;

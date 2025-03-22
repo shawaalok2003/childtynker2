@@ -10,7 +10,9 @@ const ChampsCarousel = () => {
   const handleBookingClick = () => {
     navigate("/register");
   };
+  
   const champs = [
+
     {
       id: 1,
       name: "Mahmoud",
@@ -22,7 +24,7 @@ const ChampsCarousel = () => {
       teaches: "Teaches kids to build and program humanoid robots",
       image: "/images/cm3eaX6j3HC.png", 
       projectImage: "/images/Screenshot 2025-01-18 235549.png",
-      videoUrl: "https://www.youtube.com/embed/2wiLEZtAk40", // Replace with actual video link
+      videoUrl: "", // Replace with actual video link
     },
     {
       id: 2,

@@ -43,7 +43,6 @@
   flex-wrap: wrap;
   margin-bottom: 30px;
 }
-
 .achievement-card {
   background: white;
   padding: 20px;
@@ -53,7 +52,19 @@
 }
 
 .achievement-card img {
-  width: 80%;
+  width: 300px;
+  height: auto;
+}
+.achievement-card1 {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.achievement-card1 img {
+  width: 120px;
   height: auto;
 }
 
@@ -79,7 +90,9 @@
   margin: 10px;
   border-radius: 5px;
 }
-
+.logos1{
+  height: 10px;
+}
 /* Recognized By Section */
 .recognized-by {
   margin-top: 30px;
