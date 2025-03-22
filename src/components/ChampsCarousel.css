@@ -90,7 +90,9 @@
   transform: scale(1.02);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-
+.champ-info-section{
+  width: 40%;
+}
 .champ-content {
   display: flex;
   flex-direction: row;
@@ -116,7 +118,7 @@
 /* Project Image */
 .champ-project-image {
   width: 100%;
-  max-width: 400px;
+  max-width: 800px;
   border-radius: 10px;
   transition: transform 0.3s ease-in-out;
 }

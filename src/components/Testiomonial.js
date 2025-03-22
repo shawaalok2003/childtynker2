@@ -22,6 +22,7 @@ const ChampsCarousel = () => {
       teaches: "Teaches kids to build and program humanoid robots",
       image: "/images/cm3eaX6j3HC.png", 
       projectImage: "/images/Screenshot 2025-01-18 235549.png",
+      videoUrl: "https://www.youtube.com/embed/2wiLEZtAk40", // Replace with actual video link
     },
     {
       id: 2,
@@ -34,6 +35,7 @@ const ChampsCarousel = () => {
       teaches: "Teaches kids about various robotics skills",
       image: "/images/Shreyas Image (1).png",
       projectImage: "/images/Screenshot 2025-01-18 235549.png",
+      videoUrl: "https://www.youtube.com/embed/2wiLEZtAk40", // Replace with actual video link
     },
   ];
   const testimonials = [
@@ -111,13 +113,19 @@ const ChampsCarousel = () => {
               </div>
 
               {/* Right Section */}
-              <div className="champ-project-section">
-                <img 
-                  src={champ.projectImage} 
-                  alt="Project showcase" 
-                  className="champ-project-image" 
-                />
-              </div>
+            {/* Right Section */}
+<div className="champ-project-section">
+<iframe
+  className="champ-project-video"
+  width="100%"
+  height="315"
+  src={champ.videoUrl}
+  title={champ.title}
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
+</div>
               
             </div>
           </div>

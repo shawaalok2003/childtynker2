@@ -59,7 +59,7 @@ const AchievementsSection = () => {
           Awards
         </h3>
           <div className="logos">
-            <img src="/images/AWARDES & ACCOLADES (1).png" alt="India Book of Records" />
+            <img src="/images/AWARDES & ACCOLADES.png" alt="India Book of Records" />
           </div>
         </div>
         <div className="achievement-card">
