@@ -80,6 +80,18 @@ const ChampsCarousel = () => {
           </div>
         ))}
       </div>
+      <div className="trustpilot-widget" 
+      data-locale="en-US" 
+      data-template-id="56278e9abfbbba0bdcd568bc" 
+      data-businessunit-id="67c3138311f3ffaeab09e239" 
+      data-style-height="52px" 
+      data-style-width="100%">
+      <a href="https://www.trustpilot.com/review/childtynker.com" 
+        target="_blank" 
+        rel="noopener">
+        Trustpilot
+      </a>
+    </div>
 
       {/* Section 2: Tech Leaders Showcase */}
       <h1 className="carousel-title">Meet our <span className="highlight1">Tech Leaders</span></h1>
@@ -135,19 +147,6 @@ const ChampsCarousel = () => {
       <button className="hero__button" onClick={handleBookingClick}>
         Book Your First Free Class
       </button>
-
-      <div className="trustpilot-widget" 
-        data-locale="en-US" 
-        data-template-id="56278e9abfbbba0bdcd568bc" 
-        data-businessunit-id="67c3138311f3ffaeab09e239" 
-        data-style-height="52px" 
-        data-style-width="100%">
-        <a href="https://www.trustpilot.com/review/childtynker.com" 
-          target="_blank" 
-          rel="noopener">
-          Trustpilot
-        </a>
-      </div>
     </div>
   );
 };
