@@ -92,18 +92,6 @@ const ContactPage = () => {
       </div>
 
       {/* Google Map */}
-      <div style={sectionStyle}>
-        <h2>Find Us</h2>
-        <iframe
-          title="Google Map"
-          width="100%"
-          height="300"
-          frameBorder="0"
-          style={{ border: '0', borderRadius: '10px' }}
-          src=""
-          allowFullScreen
-        ></iframe>
-      </div>
     </div>
   );
 };

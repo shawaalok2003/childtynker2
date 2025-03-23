@@ -7,20 +7,20 @@ const AchievementsSection = () => {
       {/* Top Info Section */}
       <div className="top-info">
       <div>
-          <img src="/images/For kids Age 3-16 yr.png" alt="Students" />
+          <img src="/images/For kids Age 3-16 yr-min.png" alt="Students" />
           <p>3 to 16 Years Kids</p>
         </div>
         <div>
-          <img src="/images/Students (2).png" alt="Students" />
-          <p>1000+ Students</p>
+          <img src="/images/Students (2)-min.png" alt="Students" />
+          <p>160+ Students</p>
         </div>
         <div>
-          <img src="/images/countries 1.png" alt="Countries" />
-          <p>4 Countries</p>
+          <img src="/images/countries 1-min.png" alt="Countries" />
+          <p>3 Countries</p>
         </div>
         <div>
-          <img src="/images/rating.png" alt="Reviews" />
-          <p>1000+ reviews</p>
+          <img src="/images/rating-min.png" alt="Reviews" />
+          <p>100+ reviews</p>
           <p> 4.6/5 on Google & FB</p>
         </div>
       </div>
@@ -44,8 +44,7 @@ const AchievementsSection = () => {
             <img src="/images/Group 13 .png" alt="Microsoft Award" />
           </div>
         </div>
-        
-        <div className="achievement-card1">
+        <div className="achievement-card">
         <h3 style={{
           backgroundColor: "#93339e",
           color: "white",
@@ -58,8 +57,16 @@ const AchievementsSection = () => {
         }}>
           Awards
         </h3>
-          <div className="logos1">
-            <img src="/images/AWARDES & ACCOLADES.png" alt="India Book of Records" />
+          <div className="logos">
+          <img
+          src="/images/AWARDES & ACCOLADES.png"
+          alt="India Book of Records"
+          style={{
+            width: "120px",
+            height: "auto",
+            maxWidth: "100%",
+          }}
+        />
           </div>
         </div>
         <div className="achievement-card">

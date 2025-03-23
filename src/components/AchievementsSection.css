@@ -43,7 +43,9 @@
   flex-wrap: wrap;
   margin-bottom: 30px;
 }
-.achievement-card {
+
+.achievement-card,
+.achievement-card1 {
   background: white;
   padding: 20px;
   border-radius: 10px;
@@ -52,15 +54,8 @@
 }
 
 .achievement-card img {
-  width: 300px;
+  width: 100%;
   height: auto;
-}
-.achievement-card1 {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
 }
 
 .achievement-card1 img {
@@ -90,9 +85,11 @@
   margin: 10px;
   border-radius: 5px;
 }
-.logos1{
+
+.logos1 {
   height: 10px;
 }
+
 /* Recognized By Section */
 .recognized-by {
   margin-top: 30px;
@@ -110,25 +107,53 @@
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .top-info,
   .achievements-details {
-    gap: 20px;
+    gap: 25px;
   }
+}
+
+@media (max-width: 1024px) {
   .top-info div,
-  .achievement-card {
-    width: 160px;
+  .achievement-card,
+  .achievement-card1 {
+    width: 220px;
+    height: 100px;
   }
 }
 
 @media (max-width: 768px) {
-  .top-info {
-    flex-direction: column;
-    align-items: center;
-  }
+  .top-info,
   .achievements-details {
     flex-direction: column;
     align-items: center;
+  }
+  .top-info div,
+  .achievement-card,
+  .achievement-card1 {
+    width: 100%;
+    max-width: 320px;
+    height: 300px;
+  }
+  .achievement-card1 img{
+    height: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .achievements-section {
+    padding: 30px 15px;
+  }
+  .top-info div,
+  .achievement-card,
+  .achievement-card1 {
+    width: 100%;
+    height: 100%;
+    max-width: 280px;
+  }
+  .recognition-logos img {
+    width: 200px;
   }
 }
 
@@ -136,15 +161,13 @@
   .achievements-section {
     padding: 20px;
   }
-  .top-info div {
+  .top-info div,
+  .achievement-card,
+  .achievement-card1 {
     width: 100%;
-    max-width: 300px;
-  }
-  .achievement-card {
-    width: 100%;
-    max-width: 300px;
+    max-width: 250px;
   }
   .recognition-logos img {
-    width: 120px;
+    width: 150px;
   }
 }

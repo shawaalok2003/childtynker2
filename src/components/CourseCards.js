@@ -225,7 +225,7 @@ const CourseCards = () => {
           name: "WiseChild Package Elementary",
           oldPrice: 38399,
           newPrice: 38399,
-          newPrice2: 38399 * exchangeRate, // Converting INR to USD
+          newPrice2: 32*1200, // Converting INR to USD
           sessions: "32 Classes / 32+ Projects",
           modules: [
             "BIS Certified Kit",
@@ -243,7 +243,7 @@ const CourseCards = () => {
           name: "WiseChild Package Intermediate",
           oldPrice: 70399,
           newPrice: 70399,
-          newPrice2: 70399 * exchangeRate, // Converting INR to USD
+          newPrice2: 64*1200, // Converting INR to USD
           sessions: "64 Classes / 64+ Projects",
           modules: [
             "BIS Certified Kit",
@@ -261,7 +261,7 @@ const CourseCards = () => {
           name: "WiseChild Package Advanced",
           oldPrice: 95999,
           newPrice: 95999,
-          newPrice2: 95999 * exchangeRate, // Converting INR to USD
+          newPrice2: 96*1200, // Converting INR to USD
           sessions: "96 Classes / 96+ Projects",
           modules: [
             "BIS Certified Kit",
@@ -275,6 +275,7 @@ const CourseCards = () => {
         },
       ],
     },
+
     {
       age: "6+",
       courses: [
@@ -284,7 +285,7 @@ const CourseCards = () => {
           name: "Alpha A",
           oldPrice: 38399,
           newPrice: 38399,
-          newPrice2: 38399 * exchangeRate, // Converting INR to USD
+          newPrice2: 32*1200, // Converting INR to USD
           sessions: "32 Classes / 32+ Projects",
           modules: [
             "BIS Certified Kit",
@@ -302,7 +303,7 @@ const CourseCards = () => {
           name: "Alpha B",
           oldPrice: 70399,
           newPrice: 70399,
-          newPrice2: 70399 * exchangeRate, // Converting INR to USD
+          newPrice2: 64*1200, // Converting INR to USD
           sessions: "64 Classes / 64+ Projects",
           modules: [
             "BIS Certified Kit",
@@ -320,7 +321,7 @@ const CourseCards = () => {
           name: "Alpha C",
           oldPrice: 95999,
           newPrice: 95999,
-          newPrice2: 95999 * exchangeRate, // Converting INR to USD
+          newPrice2: 96*1200, // Converting INR to USD
           sessions: "96 Classes / 96+ Projects",
           modules: [
             "BIS Certified Kit",
@@ -337,7 +338,7 @@ const CourseCards = () => {
           name: "Alpha X",
           oldPrice: 95999,
           newPrice: 95999,
-          newPrice2: 105999 * exchangeRate, // Converting INR to USD
+          newPrice2: 96*1200, // Converting INR to USD
           sessions: "96 Classes / 96+ Projects",
           modules: [
             "BIS Certified Kit",
@@ -351,6 +352,59 @@ const CourseCards = () => {
       ],
     },
     {
+      age: "8+",
+      courses: [
+        { 
+          title: "Starter ",
+          name: "Starter ",
+          oldPrice: 38399,
+          newPrice: 38399,
+          newPrice2: 30*1200, // Converting INR to USD
+          sessions: "30 Classes / 30+ Projects",
+          modules: [
+            "BIS Certified Kit",
+            "1:1 Live Classes by IIT/NIT Experts",
+            "STEM.org Accreditation",
+          ],
+          certificate: "Duration: 3 months",
+          icon: "👶",
+          videoLink : "https://youtu.be/PM_FuZVt3Rs"
+        },
+        {
+          title: "Pioneer",
+          name: "Pioneer",
+          oldPrice: 70399,
+          newPrice: 70399,
+          newPrice2: 60*1200, // Converting INR to USD
+          sessions: "60 Classes / 60+ Projects",
+          modules: [
+            "BIS Certified Kit",
+            "1:1 Live Classes by IIT/NIT Experts",
+            "STEM.org Accreditation",
+          ],
+          certificate: "Duration: 6 months",
+          icon: "👶",
+          videoLink : "https://youtu.be/IioZJIUVXhA?si=hjU0Z5zBrwMt3pUF"
+        },
+        {
+          title: "Adventure",
+          name: "Adventure",
+          oldPrice: 95999,
+          newPrice: 95999,
+          newPrice2: 100*1200, // Converting INR to USD
+          sessions: "100 Classes / 100+ Projects",
+          modules: [
+            "BIS Certified Kit",
+            "1:1 Live Classes by IIT/NIT Experts",
+            "STEM.org Accreditation",
+          ],
+          certificate: "Duration: 9 months",
+          icon: "👶",
+          videoLink:"https://youtu.be/hxI0va1Vaco?si=n_gA-3VLc2bvEne0"
+        },
+      ],
+    },
+    {
       age: "10+",
       courses: [
         {
@@ -358,7 +412,7 @@ const CourseCards = () => {
           name: "Drone Programming",
           oldPrice: 47999,
           newPrice: 47999,
-          newPrice2: 47999 * exchangeRate, // Converting INR to USD
+          newPrice2: 36*1200, // Converting INR to USD
           sessions: "36 Sessions / 20+ Projects",
           modules: ["Drone Hardware", "Basic Drone Programming"],
           certificate: "Duration: 2 months",
@@ -370,13 +424,13 @@ const CourseCards = () => {
           name: "AI and IoT Applications",
           oldPrice: 59999,
           newPrice: 59999,
-          newPrice2: 59999 * exchangeRate, // Converting INR to USD
+          newPrice2: 50*1200, // Converting INR to USD
           sessions: "50 Sessions / 50+ Projects",
           modules: ["WiseKit Platform", "AI & IoT Integration"],
           certificate: "Duration: 3 months",
           icon: "🧠",
           videoLink:
-            "https://drive.google.com/file/d/1K3OQsY4x4o60eS5soi3poh2Nn9meicUD/view",
+            "https://youtu.be/imiMe4ZbDpY?si=Wnu0Qx6ksq8p_iS2",
         },
       ],
     },
@@ -388,7 +442,7 @@ const CourseCards = () => {
           name: "IoT Mastery and AI/ML Integration Projects",
           oldPrice: 48399,
           newPrice: 48399,
-          newPrice2: 48399 * exchangeRate, // Converting INR to USD
+          newPrice2: 50*1200, // Converting INR to USD
           sessions: "50 Sessions / 20+ Projects",
           modules: ["IoT Projects", "Embedded Systems"],
           certificate: "Duration: 3 months",
@@ -401,7 +455,7 @@ const CourseCards = () => {
           name: "Machine Learning",
           oldPrice: 75399,
           newPrice: 75399,
-          newPrice2: 75399 * exchangeRate, // Converting INR to USD
+          newPrice2: 100*1200, // Converting INR to USD
           sessions: "100 Sessions / 40+ Projects",
           modules: ["ML Algorithms", "Python Integration"],
           certificate: "Duration: 6 months",
@@ -425,7 +479,7 @@ const CourseCards = () => {
   };
 
   const formatUSD = (amount) => {
-    return `$${new Intl.NumberFormat().format(amount.toFixed(2))}`;
+    return `₹${new Intl.NumberFormat().format(amount)}`;
   };
 
   return (
