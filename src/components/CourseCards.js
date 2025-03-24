@@ -235,7 +235,7 @@ const CourseCards = () => {
           certificate: "Duration: 3 months",
           icon: "👶",
           videoLink:
-            "https://drive.google.com/file/d/1rRzLrrjf3JKkM-bfA2XzURJLd-TMtDOB/view",
+            "https://youtu.be/sNfXFfGP9-k?si=PqMfqLsg2cDfTUyo",
         },
         {
           image: "/images/Image Gallery-20250306T121018Z-001/Image Gallery/Course age wise/WiseChild2-Intermediate.png",
@@ -253,7 +253,7 @@ const CourseCards = () => {
           certificate: "Duration: 6 months",
           icon: "👶",
           videoLink:
-            "https://drive.google.com/file/d/1rRzLrrjf3JKkM-bfA2XzURJLd-TMtDOB/view",
+            "https://youtu.be/sNfXFfGP9-k?si=PqMfqLsg2cDfTUyo",
         },
         {
           image: "/images/Image Gallery-20250306T121018Z-001/Image Gallery/Course age wise/WiseChild2-Adavanced.png",
@@ -271,7 +271,7 @@ const CourseCards = () => {
           certificate: "Duration: 9 months",
           icon: "👶",
           videoLink:
-            "https://drive.google.com/file/d/1rRzLrrjf3JKkM-bfA2XzURJLd-TMtDOB/view",
+            "https://youtu.be/sNfXFfGP9-k?si=PqMfqLsg2cDfTUyo",
         },
       ],
     },
@@ -355,6 +355,7 @@ const CourseCards = () => {
       age: "8+",
       courses: [
         { 
+          image: "/images/WhatsApp Image 2025-03-24 at 02.42.00.jpeg",
           title: "Starter ",
           name: "Starter ",
           oldPrice: 38399,
@@ -371,6 +372,7 @@ const CourseCards = () => {
           videoLink : "https://youtu.be/PM_FuZVt3Rs"
         },
         {
+          image: "/images/WhatsApp Image 2025-03-24 at 02.44.05.jpeg",
           title: "Pioneer",
           name: "Pioneer",
           oldPrice: 70399,
@@ -387,6 +389,7 @@ const CourseCards = () => {
           videoLink : "https://youtu.be/IioZJIUVXhA?si=hjU0Z5zBrwMt3pUF"
         },
         {
+          image: "/images/WhatsApp Image 2025-03-24 at 02.45.42.jpeg",
           title: "Adventure",
           name: "Adventure",
           oldPrice: 95999,
@@ -420,6 +423,7 @@ const CourseCards = () => {
           videoLink: null, // No video available
         },
         {
+          image: "/images/WhatsApp Image 2025-03-24 at 02.51.05.jpeg",
           title: "Defender WiseKit",
           name: "AI and IoT Applications",
           oldPrice: 59999,

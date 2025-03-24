@@ -20,7 +20,6 @@ const AchievementsSection = () => {
         </div>
         <div>
           <img src="/images/rating-min.png" alt="Reviews" />
-          <p>100+ reviews</p>
           <p> 4.6/5 on Google & FB</p>
         </div>
       </div>
