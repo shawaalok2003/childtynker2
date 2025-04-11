@@ -12,11 +12,11 @@ const AchievementsSection = () => {
         </div>
         <div>
           <img src="/images/Students (2)-min.png" alt="Students" />
-          <p>160+ Students</p>
+          <p>1600+ Students</p>
         </div>
         <div>
           <img src="/images/countries 1-min.png" alt="Countries" />
-          <p>3 Countries</p>
+          <p>4 Countries</p>
         </div>
         <div>
           <img src="/images/rating-min.png" alt="Reviews" />
