@@ -83,10 +83,10 @@ const HeroSection = () => {
           <div className="hero__image">
           <img src="/images/boy.png" alt="Hero" />
         </div>
-          <button className="hero__button" onClick={handleBookingClick}>
+          <button className="hero1" onClick={handleBookingClick}>
             Book Your First Free Class
           </button>
-          <button className="hero__button" onClick={handleDownloadClick}>
+          <button className="hero1" onClick={handleDownloadClick}>
             Download Curriculum
           </button>
           <div className="hero__logo">

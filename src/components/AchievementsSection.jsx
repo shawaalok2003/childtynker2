@@ -1,95 +1,58 @@
-import React from 'react';
-import './AchievementsSection.css'; // Import the CSS file
-
+import "./AchievementsSection.css"
 const AchievementsSection = () => {
   return (
     <div className="achievements-section">
       {/* Top Info Section */}
       <div className="top-info">
-      <div>
-          <img src="/images/For kids Age 3-16 yr-min.png" alt="Students" />
+        <div className="stat-card">
+          <div className="stat-image">
+            <img src="/images/ForkidsAge3-16yr-mi.jpeg" alt="Students" />
+          </div>
           <p>3 to 16 Years Kids</p>
         </div>
-        <div>
-          <img src="/images/Students (2)-min.png" alt="Students" />
+        <div className="stat-card">
+          <div className="stat-image">
+            <img src="/images/Students2-mi.jpeg" alt="Students" />
+          </div>
           <p>1600+ Students</p>
         </div>
-        <div>
-          <img src="/images/countries 1-min.png" alt="Countries" />
+        <div className="stat-card">
+          <div className="stat-image">
+            <img src="/images/Group10-mi.jpeg" alt="Countries" />
+          </div>
           <p>4 Countries</p>
         </div>
-        <div>
-          <img src="/images/rating-min.png" alt="Reviews" />
-          <p> 4.6/5 on Google & FB</p>
+        <div className="stat-card">
+          <div className="stat-image">
+            <img src="/images/rating-min-mi.jpeg" alt="Reviews" />
+          </div>
+          <p>4.6/5 on Google & FB</p>
         </div>
       </div>
-
       {/* Achievements Details Section */}
       <div className="achievements-details">
         <div className="achievement-card">
-        <h3 style={{
-          backgroundColor: "#93339e",
-          color: "white",
-          padding: "10px ",
-          borderRadius: "10px",
-          fontSize: "18px",
-          fontWeight: "bold",
-          display: "inline-block",
-         
-        }}>
-          Product built by an Alumni of
-        </h3>
-          <div className="logos">
-            <img src="/images/Group 13 .png" alt="Microsoft Award" />
+          <h3 className="achievement-title">Product built by an Alumni of</h3>
+          <div className="achievement-logo">
+            <img src="/images/Group13-mi.jpeg" alt="Microsoft Award" />
           </div>
         </div>
+
         <div className="achievement-card">
-        <h3 style={{
-          backgroundColor: "#93339e",
-          color: "white",
-          padding: "10px ",
-          borderRadius: "10px",
-          fontSize: "18px",
-          fontWeight: "bold",
-          display: "inline-block",
-         
-        }}>
-          Awards
-        </h3>
-          <div className="logos">
-          <img
-          src="/images/AWARDES & ACCOLADES.png"
-          alt="India Book of Records"
-          style={{
-            width: "120px",
-            height: "auto",
-            maxWidth: "100%",
-          }}
-        />
+          <h3 className="achievement-title">Awards</h3>
+          <div className="achievement-logo">
+            <img src="/images/AWARDES & ACCOLADES.png" alt="India Book of Records" className="awards-image" />
           </div>
         </div>
+
         <div className="achievement-card">
-        <h3 style={{
-          backgroundColor: "#93339e",
-          color: "white",
-          padding: "10px ",
-          borderRadius: "10px",
-          fontSize: "18px",
-          fontWeight: "bold",
-          display: "inline-block",
-         
-        }}>
-        Accredited by
-        </h3>
-          <div className="logos">
+          <h3 className="achievement-title">Accredited by</h3>
+          <div className="achievement-logo">
             <img src="/images/ACCREDITED BY.png" alt="STEM.org Certified" />
           </div>
         </div>
       </div>
-
-      {/* Product Built by an Alumni */}
-      </div>
-  );
-};
-
-export default AchievementsSection;
+    </div>
+  )
+}
+export default AchievementsSection

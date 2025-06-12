@@ -25,11 +25,7 @@ const FeaturesCertificates = () => {
       boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     }}
   >
-    <img
-      src="/images/An opportunity to Showcase your Project in Near by IITNITs Campus.-min.png"
-      alt="Showcase Project"
-      style={{ width: "80px", height: "auto", marginBottom: "10px" }}
-    />
+    
     <h3 className="feature-number" style={{ fontSize: "24px", margin: "10px 0" }}>1</h3>
     <p>An opportunity to showcase your project in nearby IIT/NITs campus.</p>
   </div>
@@ -43,11 +39,7 @@ const FeaturesCertificates = () => {
       boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     }}
   >
-    <img
-      src="/images/Completely Hands-on and Real-life projects and get Certificate Accredited by STEM.org-min_2_11zon.png"
-      alt="Certificate"
-      style={{ width: "80px", height: "auto", marginBottom: "10px" }}
-    />
+    
     <h3 className="feature-number" style={{ fontSize: "24px", margin: "10px 0" }}>2</h3>
     <p>
       Completely Hands-on and real-life projects and get a Certificate{" "}
@@ -64,11 +56,7 @@ const FeaturesCertificates = () => {
       boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     }}
   >
-    <img
-      src="/images/Dive into 11 Live Personalized, Interactive Sessions with Verified Tutors 4.5+ ratings, with the suppo.png"
-      alt="Live Sessions"
-      style={{ width: "80px", height: "auto", marginBottom: "10px" }}
-    />
+    
     <h3 className="feature-number" style={{ fontSize: "24px", margin: "10px 0" }}>3</h3>
     <p>
       Dive into 1:1 Live Personalized, Interactive Sessions with Verified Tutors
@@ -86,11 +74,7 @@ const FeaturesCertificates = () => {
       boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     }}
   >
-    <img
-      src="/images/Trainers from IITNITs Only or Having 5+Yrs. Exp.-min_5_11zon.png"
-      alt="Trainers"
-      style={{ width: "80px", height: "auto", marginBottom: "10px" }}
-    />
+    
     <h3 className="feature-number" style={{ fontSize: "24px", margin: "10px 0" }}>4</h3>
     <p>
       Trainers from <span className="highlight">IIT/NITs</span> Only or Having
