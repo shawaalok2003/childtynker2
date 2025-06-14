@@ -24,7 +24,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 25px;
+  padding: 10px;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -263,5 +263,27 @@ body {
   margin-right: 8px;
   font-size: 22px;
 }
+.navbar__auth {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+}
 
+.auth-button {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 6px 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.auth-button:hover {
+  background-color: #f0f0f0;
+  border-color: #999;
+  color: #000;
+}
 /* Mobile Adjustments */

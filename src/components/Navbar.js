@@ -75,6 +75,11 @@ const Navbar = () => {
             <img src="/images/Logo ChildTynker  (6).png" alt="Contact" className="Contact" />
           </NavLink>
         </div>
+        <div className="navbar__auth">
+  <NavLink to="/login">
+    <button className="auth-button">Login</button>
+  </NavLink>
+</div>
       </div>
 
       {/* Floating WhatsApp & Call Buttons */}

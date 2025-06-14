@@ -35,6 +35,12 @@ import WhatWillKidReceive from './components/WhatWillKidReceive';
 import FeaturesCertificates from './components/FeaturesCertificates';
 import Chatbot from './components/Chatbot';
 import SchoolGallery from './components/Gallery';
+import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
+import Dashboard from './components/Auth/Dashboard';
+import TeacherDashboard from './components/Auth/TeacherDashboard';
+import StudentDashboard from './components/Auth/StudentDashboard';
+import AdminPanel from './components/Auth/AdminPanel';
 
 function App() {
   return (
@@ -96,7 +102,13 @@ function App() {
               <Footer/>
             </>
           } />
+            <Route path="/login" element={<Login/>} />
+        <Route path="/signup" element={<Signup/>} />
+        <Route path="/dashboard" element={<Dashboard/>} />
+         <Route path="/dashboard/teacher" element={<TeacherDashboard/>} />
+  <Route path="/dashboard/student" element={<StudentDashboard/>} />
           <Route path="/" element={<EducatorListPage />} />
+           <Route path="/admin" element={<AdminPanel/>} />
           <Route path="/educator/:id" element={<EducatorPage />} />
           <Route path="/" element={<HeroSection />} />
           <Route path="/register" element={<RegistrationPage />} />

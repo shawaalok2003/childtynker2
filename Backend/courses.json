@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "React Basics",
+    "teacher": "a@example.com",
+    "status": "ongoing",
+    "completed": false,
+    "enrolledStudents": ["student@example.com"],
+    "quiz": [
+      {
+        "question": "What is JSX?",
+        "options": ["XML in JS", "CSS in JS"],
+        "answer": "XML in JS"
+      }
+    ]
+  }
+]

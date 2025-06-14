@@ -1,0 +1,22 @@
+[
+  {
+    "email": "aalokshaw2003@gmail.com",
+    "password": "Aalok@6290",
+    "role": "student"
+  },
+  {
+    "email": "Childtynker@gmail.com",
+    "password": "Child@2345",
+    "role": "student"
+  },
+  {
+    "email": "hey@gmail.com",
+    "password": "hey@2345",
+    "role": "student"
+  },
+  {
+    "email": "a@gmail.com",
+    "password": "Aalok@6290",
+    "role": "teacher"
+  }
+]
