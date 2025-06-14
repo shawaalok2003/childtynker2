@@ -1,55 +1,66 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
-import "./Dashboard.css"; // Include CSS for layout & sidebar
+// ✅ Enhanced Dashboard.jsx for Wallet Withdrawal Amount Selection
 
-const dummyCourses = [
-  {
-    id: 1,
-    title: "React for Beginners",
-    teacher: "teacher@example.com",
-    enrolledStudents: 40,
-    status: "ongoing",
-    quiz: [
-      {
-        question: "What is JSX?",
-        options: ["XML in JS", "CSS Library"],
-        answer: "XML in JS",
-      },
-    ],
-    completed: false,
-  },
-  {
-    id: 2,
-    title: "Data Structures in C++",
-    teacher: "teacher@example.com",
-    enrolledStudents: 55,
-    status: "upcoming",
-    quiz: [],
-    completed: false,
-  },
-];
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
+import "./Dashboard.css";
 
 const Dashboard = () => {
   const { state } = useLocation();
   const [wallet, setWallet] = useState(0);
-  const [courses, setCourses] = useState(dummyCourses);
+  const [courses, setCourses] = useState([]);
   const [activePage, setActivePage] = useState("dashboard");
   const [withdrawRequested, setWithdrawRequested] = useState(false);
+  const [withdrawAmount, setWithdrawAmount] = useState(0);
+  const [lastWithdrawal, setLastWithdrawal] = useState(null);
 
-  const handleCompleteClass = (courseId) => {
-    setCourses((prev) =>
-      prev.map((course) =>
-        course.id === courseId && !course.completed
-          ? { ...course, completed: true }
-          : course
-      )
-    );
-    setWallet((prev) => prev + 100); // Earn ₹100
+  useEffect(() => {
+    if (state?.role === "teacher") {
+      axios.get(`http://localhost:5000/api/courses/teacher/${state.email}`)
+        .then(res => setCourses(res.data));
+    } else if (state?.role === "student") {
+      axios.get("http://localhost:5000/api/courses").then(res => setCourses(res.data));
+    }
+
+    axios.get("http://localhost:5000/api/users").then(res => {
+      const user = res.data.find(u => u.email === state.email);
+      if (user) setWallet(user.wallet || 0);
+    });
+
+   axios.get(`http://localhost:5000/api/teacher-wallet/${state.email}`).then(res => {
+  setLastWithdrawal(res.data.lastWithdrawal || null);
+});
+  }, [state]);
+
+  const handleCompleteClass = async (courseId) => {
+    try {
+      const res = await axios.post("http://localhost:5000/api/complete-class", {
+        email: state.email,
+        courseId
+      });
+      setWallet(res.data.wallet);
+      setCourses(prev =>
+        prev.map(course =>
+          course.id === courseId ? { ...course, completed: true } : course
+        )
+      );
+    } catch (err) {
+      alert(err.response?.data?.message || "Error completing class");
+    }
   };
 
-  const handleWithdraw = () => {
+  const handleWithdraw = async () => {
+    if (withdrawAmount <= 0 || withdrawAmount > wallet) {
+      alert("Invalid withdrawal amount");
+      return;
+    }
     setWithdrawRequested(true);
-    // Here you would send API call to backend to register the withdraw
+    await axios.post("http://localhost:5000/api/withdraw", {
+      email: state.email,
+      amount: withdrawAmount
+    });
+    setWallet(wallet - withdrawAmount);
+    setWithdrawAmount(0);
   };
 
   const renderStudentCourses = () => (
@@ -60,7 +71,7 @@ const Dashboard = () => {
           <h4>{course.title}</h4>
           <p>Status: {course.status}</p>
           <p>Instructor: {course.teacher}</p>
-          {course.quiz.length > 0 && (
+          {course.quiz?.length > 0 && (
             <div>
               <h5>Quiz:</h5>
               {course.quiz.map((q, i) => (
@@ -103,12 +114,23 @@ const Dashboard = () => {
     <div>
       <h3>Wallet</h3>
       <p>Balance: ₹{wallet}</p>
+      <input
+        type="number"
+        value={withdrawAmount}
+        onChange={(e) => setWithdrawAmount(parseInt(e.target.value))}
+        placeholder="Enter amount to withdraw"
+      />
       <button onClick={handleWithdraw} disabled={withdrawRequested}>
         Request Withdraw
       </button>
       {withdrawRequested && (
         <p style={{ color: "green" }}>
-          ✅ Withdraw request sent. You’ll receive your money in 7 days.
+          ✅ Withdraw request for ₹{withdrawAmount} sent. You’ll receive your money in 7 days.
+        </p>
+      )}
+      {lastWithdrawal && (
+        <p style={{ marginTop: 10 }}>
+          <strong>Last Withdrawal:</strong> ₹{lastWithdrawal.amount} - {lastWithdrawal.status} on {new Date(lastWithdrawal.requestedAt).toLocaleDateString()}
         </p>
       )}
     </div>
@@ -131,17 +153,25 @@ const Dashboard = () => {
       </aside>
 
       <main className="dashboard-main">
-        <h2>{activePage === "dashboard" ? "Dashboard" : activePage === "courses" ? "Courses" : "Wallet"}</h2>
+        <h2>
+          {activePage === "dashboard"
+            ? "Dashboard"
+            : activePage === "courses"
+            ? "Courses"
+            : "Wallet"}
+        </h2>
         {activePage === "dashboard" && (
           <>
             <p><strong>Role:</strong> {state?.role}</p>
           </>
         )}
-
         {activePage === "courses" &&
-          (state?.role === "student" ? renderStudentCourses() : renderTeacherCourses())}
-
-        {activePage === "wallet" && state?.role === "teacher" && renderWallet()}
+          (state?.role === "student"
+            ? renderStudentCourses()
+            : renderTeacherCourses())}
+        {activePage === "wallet" &&
+          state?.role === "teacher" &&
+          renderWallet()}
       </main>
     </div>
   );

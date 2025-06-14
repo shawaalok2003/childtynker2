@@ -1,74 +1,98 @@
+// AdminPanel.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const AdminPanel = () => {
   const [withdrawals, setWithdrawals] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [courses, setCourses] = useState([]);
+  const [newCourse, setNewCourse] = useState({ title: "", teacher: "", description: "" });
 
   const fetchWithdrawals = async () => {
-    try {
-      const res = await axios.get("http://localhost:5000/api/withdrawals");
-      setWithdrawals(res.data);
-    } catch (error) {
-      console.error("Error fetching withdrawals:", error);
-    }
+    const res = await axios.get("http://localhost:5000/api/withdrawals");
+    setWithdrawals(res.data);
+  };
+
+  const fetchUsers = async () => {
+    const res = await axios.get("http://localhost:5000/api/users");
+    setUsers(res.data.filter((u) => u.role === "teacher"));
+  };
+
+  const fetchCourses = async () => {
+    const res = await axios.get("http://localhost:5000/api/courses?all=true");
+    setCourses(res.data);
   };
 
   const updateStatus = async (email, requestedAt, status) => {
-    try {
-      await axios.post("http://localhost:5000/api/withdrawals/update", {
-        email,
-        requestedAt,
-        status,
-      });
-      fetchWithdrawals();
-    } catch (error) {
-      console.error("Error updating status:", error);
-    }
+    await axios.post("http://localhost:5000/api/withdrawals/update", { email, requestedAt, status });
+    fetchWithdrawals();
+  };
+
+  const handleCreateCourse = async () => {
+    await axios.post("http://localhost:5000/api/create-course", newCourse);
+    fetchCourses();
+    setNewCourse({ title: "", teacher: "", description: "" });
   };
 
   useEffect(() => {
     fetchWithdrawals();
+    fetchUsers();
+    fetchCourses();
   }, []);
 
   return (
-    <div style={{ padding: "20px", maxWidth: "600px", margin: "0 auto" }}>
-      <h2>Withdrawal Requests</h2>
-      {withdrawals.length === 0 ? (
-        <p>No withdrawal requests found.</p>
-      ) : (
-        withdrawals.map((w, index) => (
-          <div
-            key={index}
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "8px",
-              padding: "10px",
-              marginBottom: "15px",
-            }}
-          >
-            <p><strong>Email:</strong> {w.email}</p>
-            <p><strong>Amount:</strong> ₹{w.amount}</p>
-            <p><strong>Status:</strong> {w.status}</p>
-            <p><strong>Requested At:</strong> {new Date(w.requestedAt).toLocaleString()}</p>
-            {w.status === "pending" && (
-              <div>
-                <button
-                  onClick={() => updateStatus(w.email, w.requestedAt, "approved")}
-                  style={{ marginRight: "10px", backgroundColor: "green", color: "#fff", padding: "5px 10px" }}
-                >
-                  Approve
-                </button>
-                <button
-                  onClick={() => updateStatus(w.email, w.requestedAt, "rejected")}
-                  style={{ backgroundColor: "red", color: "#fff", padding: "5px 10px" }}
-                >
-                  Reject
-                </button>
-              </div>
-            )}
-          </div>
-        ))
-      )}
+    <div style={{ padding: 20 }}>
+      <h2>Admin Panel</h2>
+
+      <div>
+        <h3>Create Course</h3>
+        <input
+          type="text"
+          placeholder="Title"
+          value={newCourse.title}
+          onChange={(e) => setNewCourse({ ...newCourse, title: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Description"
+          value={newCourse.description}
+          onChange={(e) => setNewCourse({ ...newCourse, description: e.target.value })}
+        />
+        <select
+          value={newCourse.teacher}
+          onChange={(e) => setNewCourse({ ...newCourse, teacher: e.target.value })}
+        >
+          <option value="">Select Teacher</option>
+          {users.map((u, i) => (
+            <option key={i} value={u.email}>
+              {u.email}
+            </option>
+          ))}
+        </select>
+        <button onClick={handleCreateCourse}>Create Course</button>
+      </div>
+
+      <div>
+        <h3>Withdrawal Requests</h3>
+        {withdrawals.length === 0 ? (
+          <p>No withdrawal requests.</p>
+        ) : (
+          withdrawals.map((w, i) => (
+            <div key={i} style={{ border: "1px solid gray", margin: "10px 0", padding: 10 }}>
+              <p>Email: {w.email}</p>
+              <p>Amount: ₹{w.amount}</p>
+              <p>Status: {w.status}</p>
+              <p>Requested: {new Date(w.requestedAt).toLocaleString()}</p>
+              {w.status === "pending" && (
+                <>
+                  <button onClick={() => updateStatus(w.email, w.requestedAt, "approved")}>Approve</button>
+                  <button onClick={() => updateStatus(w.email, w.requestedAt, "rejected")}>Reject</button>
+                </>
+              )}
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 };

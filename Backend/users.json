@@ -18,5 +18,11 @@
     "email": "a@gmail.com",
     "password": "Aalok@6290",
     "role": "teacher"
+  },
+  {
+    "email": "aalokshaw@gmail.com",
+    "password": "Aalok@2345",
+    "role": "teacher",
+    "wallet": 0
   }
 ]

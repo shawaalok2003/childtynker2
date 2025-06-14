@@ -5,13 +5,36 @@
     "teacher": "a@example.com",
     "status": "ongoing",
     "completed": false,
-    "enrolledStudents": ["student@example.com"],
+    "enrolledStudents": [
+      "student@example.com"
+    ],
     "quiz": [
       {
         "question": "What is JSX?",
-        "options": ["XML in JS", "CSS in JS"],
+        "options": [
+          "XML in JS",
+          "CSS in JS"
+        ],
         "answer": "XML in JS"
       }
     ]
+  },
+  {
+    "id": "course_1749930726431",
+    "title": "hey",
+    "description": "hey",
+    "teacher": "a@gmail.com",
+    "completed": false,
+    "quiz": [],
+    "schedule": ""
+  },
+  {
+    "id": "course_1749930743335",
+    "title": "hey",
+    "description": "hey",
+    "teacher": "aalokshaw@gmail.com",
+    "completed": true,
+    "quiz": [],
+    "schedule": ""
   }
 ]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "course_1749932189736",
+    "title": "",
+    "description": "",
+    "teacher": "",
+    "completed": false,
+    "quiz": [],
+    "schedule": ""
+  },
+  {
+    "id": "course_1749932190260",
+    "title": "",
+    "description": "",
+    "teacher": "",
+    "completed": false,
+    "quiz": [],
+    "schedule": ""
+  },
+  {
+    "id": "course_1749932826271",
+    "title": "hey",
+    "description": "",
+    "teacher": "e@gmail.com",
+    "completed": true,
+    "quiz": [],
+    "schedule": ""
+  }
+]

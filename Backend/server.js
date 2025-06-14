@@ -1,3 +1,4 @@
+// server.js
 const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
@@ -5,20 +6,17 @@ const bodyParser = require("body-parser");
 const app = express();
 const PORT = 5000;
 
-// File Paths
 const USERS_FILE = "./users.json";
 const COURSES_FILE = "./courses.json";
 const WITHDRAWALS_FILE = "./withdrawals.json";
 
-// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// Utility Functions
 const readFile = (path) => (fs.existsSync(path) ? JSON.parse(fs.readFileSync(path)) : []);
 const writeFile = (path, data) => fs.writeFileSync(path, JSON.stringify(data, null, 2));
 
-// ---------- AUTH ROUTES ----------
+// AUTH ROUTES
 app.post("/api/signup", (req, res) => {
   const { email, password, role } = req.body;
   const users = readFile(USERS_FILE);
@@ -38,31 +36,27 @@ app.post("/api/login", (req, res) => {
   const users = readFile(USERS_FILE);
   const user = users.find((u) => u.email === email && u.password === password && u.role === role);
   if (!user) return res.status(401).json({ message: "Invalid credentials" });
-
   res.json({ message: "Login successful", user });
 });
 
-// ---------- COURSE ROUTES ----------
-// Create new course
+// COURSE ROUTES
 app.post("/api/create-course", (req, res) => {
   const { title, teacher, description } = req.body;
   const courses = readFile(COURSES_FILE);
-
   const newCourse = {
     id: "course_" + Date.now(),
     title,
     description,
     teacher,
     completed: false,
-    quiz: []
+    quiz: [],
+    schedule: ""
   };
-
   courses.push(newCourse);
   writeFile(COURSES_FILE, courses);
   res.json({ message: "Course created successfully", course: newCourse });
 });
 
-// Get courses (only incomplete unless ?all=true)
 app.get("/api/courses", (req, res) => {
   const showAll = req.query.all === "true";
   const courses = readFile(COURSES_FILE);
@@ -70,17 +64,20 @@ app.get("/api/courses", (req, res) => {
   res.json(filtered);
 });
 
+app.get("/api/courses/teacher/:email", (req, res) => {
+  const { email } = req.params;
+  const courses = readFile(COURSES_FILE);
+  const teacherCourses = courses.filter((c) => c.teacher === email);
+  res.json(teacherCourses);
+});
+
 app.post("/api/complete-class", (req, res) => {
   const { email, courseId } = req.body;
   const courses = readFile(COURSES_FILE);
   const users = readFile(USERS_FILE);
-
   const courseIndex = courses.findIndex((c) => c.id === courseId && c.teacher === email);
   if (courseIndex === -1) return res.status(404).json({ message: "Course not found or not authorized" });
-
-  if (courses[courseIndex].completed) {
-    return res.status(400).json({ message: "Class already completed" });
-  }
+  if (courses[courseIndex].completed) return res.status(400).json({ message: "Class already completed" });
 
   courses[courseIndex].completed = true;
   writeFile(COURSES_FILE, courses);
@@ -92,28 +89,46 @@ app.post("/api/complete-class", (req, res) => {
   res.json({ message: "Class marked complete. ₹100 credited.", wallet: users[userIndex].wallet });
 });
 
-// Add a quiz to a course
 app.post("/api/add-quiz", (req, res) => {
   const { courseId, question, options, answer } = req.body;
   const courses = readFile(COURSES_FILE);
-
   const course = courses.find((c) => c.id === courseId);
   if (!course) return res.status(404).json({ message: "Course not found" });
 
   if (!course.quiz) course.quiz = [];
   course.quiz.push({ question, options, answer });
-
   writeFile(COURSES_FILE, courses);
   res.json({ message: "Quiz added successfully" });
 });
 
-// ---------- WITHDRAWAL ROUTES ----------
+app.post("/api/schedule-class", (req, res) => {
+  const { courseId, schedule } = req.body;
+  const courses = readFile(COURSES_FILE);
+  const course = courses.find((c) => c.id === courseId);
+  if (!course) return res.status(404).json({ message: "Course not found" });
+
+  course.schedule = schedule;
+  writeFile(COURSES_FILE, courses);
+  res.json({ message: "Class scheduled successfully", course });
+});
+
+// WITHDRAWAL ROUTES
 const getWithdrawals = () => (fs.existsSync(WITHDRAWALS_FILE) ? JSON.parse(fs.readFileSync(WITHDRAWALS_FILE)) : []);
 const saveWithdrawals = (withdrawals) => fs.writeFileSync(WITHDRAWALS_FILE, JSON.stringify(withdrawals, null, 2));
 
 app.post("/api/withdraw", (req, res) => {
   const { email, amount } = req.body;
+  const users = readFile(USERS_FILE);
   const withdrawals = getWithdrawals();
+
+  const userIndex = users.findIndex(u => u.email === email);
+  if (userIndex === -1 || users[userIndex].wallet < amount) {
+    return res.status(400).json({ message: "Insufficient balance or user not found" });
+  }
+
+  users[userIndex].wallet -= amount;
+  writeFile(USERS_FILE, users);
+
   const request = {
     email,
     amount,
@@ -122,6 +137,7 @@ app.post("/api/withdraw", (req, res) => {
   };
   withdrawals.push(request);
   saveWithdrawals(withdrawals);
+
   res.json({ message: "Withdrawal request submitted. Admin will process it soon." });
 });
 
@@ -143,16 +159,29 @@ app.post("/api/withdrawals/update", (req, res) => {
   });
 
   if (!updated) return res.status(404).json({ message: "Withdrawal not found" });
-
   saveWithdrawals(updatedWithdrawals);
   res.json({ message: `Withdrawal ${status}`, withdrawals: updatedWithdrawals });
 });
-// ---------- USERS ROUTE ----------
+
 app.get("/api/users", (req, res) => {
   const users = readFile(USERS_FILE);
   res.json(users);
 });
-// ---------- START SERVER ----------
+
+app.get("/api/teacher-wallet/:email", (req, res) => {
+  const { email } = req.params;
+  const users = readFile(USERS_FILE);
+  const user = users.find(u => u.email === email);
+  const withdrawals = getWithdrawals().filter(w => w.email === email);
+  if (!user) return res.status(404).json({ message: "User not found" });
+
+  const lastWithdrawal = withdrawals.length > 0
+    ? withdrawals[withdrawals.length - 1]
+    : null;
+
+  res.json({ wallet: user.wallet, withdrawals, lastWithdrawal }); // ✅ Include lastWithdrawal
+});
+
 app.listen(PORT, () => {
   console.log(`✅ Server is running at http://localhost:${PORT}`);
 });

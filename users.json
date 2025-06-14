@@ -1,0 +1,19 @@
+[
+  {
+    "email": "hey2@gmail.com",
+    "password": "1234",
+    "role": "student"
+  },
+  {
+    "email": "e@gmail.com",
+    "password": "1234",
+    "role": "teacher",
+    "wallet": 0
+  },
+  {
+    "email": "aalokshaw2003@gmail.com",
+    "password": "iD3HZxPTv54Q3Mj",
+    "role": "teacher",
+    "wallet": 0
+  }
+]
