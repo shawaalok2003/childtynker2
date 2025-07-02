@@ -25,5 +25,14 @@
     "completed": true,
     "quiz": [],
     "schedule": ""
+  },
+  {
+    "id": "course_1751459113779",
+    "title": "ai course",
+    "description": "jpoepe\\",
+    "teacher": "aalok2@childtynker.com",
+    "completed": true,
+    "quiz": [],
+    "schedule": ""
   }
 ]

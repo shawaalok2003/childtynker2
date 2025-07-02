@@ -3,8 +3,12 @@ import './PioneerPackage.css';
 import { FaRobot, FaLightbulb, FaMedal, FaTools } from 'react-icons/fa';
 import Modal from 'react-modal';
 
+// Function to get the amount based on selected course
+const getAmount = (course) => {
+  return course === 'Single Course' ? 4499900 : 7499900; // Amount in paise
+};
+
 const PioneerPackage = () => {
-  const [orderData, setOrderData] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -12,6 +16,10 @@ const PioneerPackage = () => {
     course: 'Single Course', // Default selection
   });
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [coupon, setCoupon] = useState('');
+  const [discount, setDiscount] = useState(0);
+  const [finalAmount, setFinalAmount] = useState(getAmount('Single Course'));
+  const [couponMessage, setCouponMessage] = useState('');
 
   // Open & Close Modal
   const openModal = () => setModalIsOpen(true);
@@ -26,70 +34,56 @@ const PioneerPackage = () => {
     });
   };
 
-  // Get Pricing Based on Course Selection
-  const getAmount = (course) => {
-    return course === 'Single Course' ? 4499900 : 7499900; // Amount in paise
+  // Function to handle coupon code
+  const handleCoupon = (code, course) => {
+    let amt = getAmount(course);
+    let disc = 0;
+    let msg = '';
+    if (code === 'OFF10') {
+      disc = 0.10;
+      msg = '10% off applied!';
+    } else if (code === 'OFF20') {
+      disc = 0.20;
+      msg = '20% off applied!';
+    } else if (code === 'OFF30') {
+      disc = 0.30;
+      msg = '30% off applied!';
+    } else if (code.length > 0) {
+      msg = 'Invalid coupon code';
+    }
+    setDiscount(disc);
+    setCouponMessage(msg);
+    setFinalAmount(Math.round(amt * (1 - disc)));
   };
 
-  // Create Razorpay Order
-  const createOrder = async () => {
-    const response = await fetch('http://localhost:5000/create-order', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        amount: getAmount(formData.course),
-        currency: 'INR',
-        customer: formData, 
-      }),
-    });
+  // Update final amount when course or coupon changes
+  React.useEffect(() => {
+    handleCoupon(coupon, formData.course);
+    // eslint-disable-next-line
+  }, [formData.course, coupon]);
 
-    const data = await response.json();
-    setOrderData(data);
-    initializeRazorpay(data);
-  };
-
-  // Initialize Razorpay Payment
-  const initializeRazorpay = (orderData) => {
-    const options = {
-      key: 'rzp_live_a8Hc5dJCBEsE0Y',
-      amount: orderData.amount,
-      currency: orderData.currency,
-      name: 'ChildTynker',
-      description: 'Pioneer Package Enrollment',
-      order_id: orderData.id,
-      handler: async function (response) {
-        await verifyPayment(response);
-        alert('Payment successful! Order ID: ' + response.razorpay_order_id);
-      },
-      prefill: {
-        name: formData.name,
-        email: formData.email,
-        contact: formData.contact,
-      },
-      notes: { address: 'Your address' },
-      theme: { color: '#80178a' },
-    };
-
-    const razorpay = new window.Razorpay(options);
-    razorpay.open();
-  };
-
-  // Verify Payment
-  const verifyPayment = async (paymentResponse) => {
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = paymentResponse;
-
-    const response = await fetch('http://localhost:5000/verify-payment', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        payment_id: razorpay_payment_id,
-        order_id: razorpay_order_id,
-        signature: razorpay_signature,
-      }),
-    });
-
-    const result = await response.json();
-    alert(result.success ? 'Payment verified and order updated!' : 'Payment verification failed');
+  // Create Razorpay Payment Link
+  const createPaymentLink = async () => {
+    try {
+      const response = await fetch('http://localhost:5001/create-payment-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          amount: finalAmount,
+          currency: 'INR',
+          customer: formData,
+        }),
+      });
+      const data = await response.json();
+      if (data.success && data.short_url) {
+        window.location.href = data.short_url;
+      } else {
+        alert('Failed to create payment link. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error creating payment link:', error);
+      alert('Failed to create payment link. Please try again.');
+    }
   };
 
   return (
@@ -128,29 +122,55 @@ const PioneerPackage = () => {
       {/* Modal Form */}
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Enrollment Form">
         <h2>Fill Your Details</h2>
-        <form onSubmit={(e) => { e.preventDefault(); createOrder(); closeModal(); }}>
-          <label>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            createPaymentLink();
+            closeModal();
+          }}
+          style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '1rem', borderRadius: '10px', background: '#f9f6fd', boxShadow: '0 2px 8px #e0d7ee' }}
+        >
+          <label style={{ fontWeight: 'bold' }}>
             Name:
-            <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
+            <input type="text" name="name" value={formData.name} onChange={handleInputChange} required style={{ marginLeft: 8, padding: 6, borderRadius: 5, border: '1px solid #ccc', width: '80%' }} />
           </label>
-          <label>
+          <label style={{ fontWeight: 'bold' }}>
             Email:
-            <input type="email" name="email" value={formData.email} onChange={handleInputChange} required />
+            <input type="email" name="email" value={formData.email} onChange={handleInputChange} required style={{ marginLeft: 8, padding: 6, borderRadius: 5, border: '1px solid #ccc', width: '80%' }} />
           </label>
-          <label>
+          <label style={{ fontWeight: 'bold' }}>
             Contact:
-            <input type="text" name="contact" value={formData.contact} onChange={handleInputChange} required />
+            <input type="text" name="contact" value={formData.contact} onChange={handleInputChange} required style={{ marginLeft: 8, padding: 6, borderRadius: 5, border: '1px solid #ccc', width: '80%' }} />
           </label>
-          <label>
+          <label style={{ fontWeight: 'bold' }}>
             Select Course:
-            <select name="course" value={formData.course} onChange={handleInputChange}>
+            <select name="course" value={formData.course} onChange={handleInputChange} style={{ marginLeft: 8, padding: 6, borderRadius: 5, border: '1px solid #ccc', width: '80%' }}>
               <option value="Single Course">Single Course (₹44,999)</option>
               <option value="Combined">Combined (₹74,999)</option>
             </select>
           </label>
-          <button type="submit">Proceed to Payment</button>
+          <label style={{ fontWeight: 'bold' }}>
+            Coupon Code:
+            <input
+              type="text"
+              name="coupon"
+              value={coupon}
+              onChange={e => setCoupon(e.target.value.trim().toUpperCase())}
+              style={{ marginLeft: 8, padding: 6, borderRadius: 5, border: '1px solid #ccc', width: '60%' }}
+            />
+            {couponMessage && (
+              <span style={{ color: couponMessage.includes('off') ? 'green' : 'red', marginLeft: 10, fontWeight: 'bold' }}>{couponMessage}</span>
+            )}
+          </label>
+          <div style={{ fontWeight: 'bold', fontSize: '1.1rem', color: '#80178a', marginTop: 8 }}>
+            Payable Amount: ₹{(finalAmount / 100).toLocaleString('en-IN')}
+            {discount > 0 && (
+              <span style={{ color: '#388e3c', marginLeft: 10 }}>(Discount Applied)</span>
+            )}
+          </div>
+          <button type="submit" style={{ background: '#80178a', color: '#fff', padding: '10px 0', border: 'none', borderRadius: 6, fontWeight: 'bold', fontSize: '1.1rem', cursor: 'pointer', marginTop: 10, boxShadow: '0 2px 6px #e0d7ee' }}>Proceed to Payment</button>
         </form>
-        <button onClick={closeModal}>Close</button>
+        <button onClick={closeModal} style={{ marginTop: 10, background: '#fff', color: '#80178a', border: '1px solid #80178a', borderRadius: 6, padding: '8px 0', fontWeight: 'bold', cursor: 'pointer' }}>Close</button>
       </Modal>
     </div>
   );

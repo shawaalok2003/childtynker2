@@ -3,6 +3,13 @@ import './WiseChild.css';
 import { FaRobot, FaGraduationCap, FaAward, FaTools, FaMedal, FaCogs } from 'react-icons/fa';
 import Modal from 'react-modal';
 
+// Function to get the amount based on selected course
+const getAmount = (course) => {
+  if (course === 'Elementary') return 3839900; // ₹38,399 in paise
+  if (course === 'Intermediate') return 7039900; // ₹70,399 in paise
+  return 9599900; // ₹95,999 in paise for Advanced
+};
+
 const WiseChildPackage = () => {
   const [orderData, setOrderData] = useState(null);
   const [formData, setFormData] = useState({
@@ -12,6 +19,10 @@ const WiseChildPackage = () => {
     course: 'Elementary',
   });
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [coupon, setCoupon] = useState('');
+  const [discount, setDiscount] = useState(0);
+  const [finalAmount, setFinalAmount] = useState(getAmount('Elementary'));
+  const [couponMessage, setCouponMessage] = useState('');
 
   const openModal = () => setModalIsOpen(true);
   const closeModal = () => setModalIsOpen(false);
@@ -24,93 +35,58 @@ const WiseChildPackage = () => {
     });
   };
 
-  // Function to create Razorpay order
-  const createOrder = async () => {
+  // Function to handle coupon code
+  const handleCoupon = (code, course) => {
+    let amt = getAmount(course);
+    let disc = 0;
+    let msg = '';
+    if (code === 'OFF10') {
+      disc = 0.10;
+      msg = '10% off applied!';
+    } else if (code === 'OFF20') {
+      disc = 0.20;
+      msg = '20% off applied!';
+    } else if (code === 'OFF30') {
+      disc = 0.30;
+      msg = '30% off applied!';
+    } else if (code.length > 0) {
+      msg = 'Invalid coupon code';
+    }
+    setDiscount(disc);
+    setCouponMessage(msg);
+    setFinalAmount(Math.round(amt * (1 - disc)));
+  };
+
+  // Update final amount when course or coupon changes
+  React.useEffect(() => {
+    handleCoupon(coupon, formData.course);
+    // eslint-disable-next-line
+  }, [formData.course, coupon]);
+
+  // Function to create Razorpay payment link
+  const createPaymentLink = async () => {
     try {
-      const response = await fetch('https://childtynker-r8zx.vercel.app/create-order', {
+      const response = await fetch('http://localhost:5001/create-payment-link', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount: getAmount(formData.course),
+          amount: finalAmount,
           currency: 'INR',
           customer: formData,
         }),
       });
 
       const data = await response.json();
-      setOrderData(data);
-      initializeRazorpay(data);
-    } catch (error) {
-      console.error('Error creating order:', error);
-      alert('Failed to create order. Please try again.');
-    }
-  };
-
-  // Function to get the amount based on selected course
-  const getAmount = (course) => {
-    if (course === 'Elementary') return 3839900; // ₹38,399 in paise
-    if (course === 'Intermediate') return 7039900; // ₹70,399 in paise
-    return 9599900; // ₹95,999 in paise for Advanced
-  };
-
-  // Function to initialize Razorpay payment
-  const initializeRazorpay = (orderData) => {
-    const options = {
-      key: 'rzp_live_a8Hc5dJCBEsE0Y',
-      amount: orderData.amount,
-      currency: orderData.currency,
-      name: 'ChildTynker',
-      description: 'Wise Child Package Enrollment',
-      order_id: orderData.id,
-      handler: async function (response) {
-        await verifyPayment(response);
-        alert('Payment successful! Order ID: ' + response.razorpay_order_id);
-      },
-      prefill: {
-        name: formData.name,
-        email: formData.email,
-        contact: formData.contact,
-      },
-      notes: {
-        address: 'Your address',
-      },
-      theme: {
-        color: '#80178a',
-      },
-    };
-
-    const razorpay = new window.Razorpay(options);
-    razorpay.open();
-  };
-
-  // Function to verify payment
-  const verifyPayment = async (paymentResponse) => {
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = paymentResponse;
-
-    try {
-      const response = await fetch('https://childtynker-r8zx.vercel.app/verify-payment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          payment_id: razorpay_payment_id,
-          order_id: razorpay_order_id,
-          signature: razorpay_signature,
-        }),
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        alert('Payment verified and order updated!');
+      if (data.success && data.short_url) {
+        window.location.href = data.short_url; // Redirect to Razorpay payment page
       } else {
-        alert('Payment verification failed');
+        alert('Failed to create payment link. Please try again.');
       }
     } catch (error) {
-      console.error('Payment verification failed:', error);
-      alert('Error verifying payment. Please contact support.');
+      console.error('Error creating payment link:', error);
+      alert('Failed to create payment link. Please try again.');
     }
   };
 
@@ -187,33 +163,53 @@ const WiseChildPackage = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            createOrder();
+            createPaymentLink();
             closeModal();
           }}
+          style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '1rem', borderRadius: '10px', background: '#f9f6fd', boxShadow: '0 2px 8px #e0d7ee' }}
         >
-          <label>
+          <label style={{ fontWeight: 'bold' }}>
             Name:
-            <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
+            <input type="text" name="name" value={formData.name} onChange={handleInputChange} required style={{ marginLeft: 8, padding: 6, borderRadius: 5, border: '1px solid #ccc', width: '80%' }} />
           </label>
-          <label>
+          <label style={{ fontWeight: 'bold' }}>
             Email:
-            <input type="email" name="email" value={formData.email} onChange={handleInputChange} required />
+            <input type="email" name="email" value={formData.email} onChange={handleInputChange} required style={{ marginLeft: 8, padding: 6, borderRadius: 5, border: '1px solid #ccc', width: '80%' }} />
           </label>
-          <label>
+          <label style={{ fontWeight: 'bold' }}>
             Contact:
-            <input type="text" name="contact" value={formData.contact} onChange={handleInputChange} required />
+            <input type="text" name="contact" value={formData.contact} onChange={handleInputChange} required style={{ marginLeft: 8, padding: 6, borderRadius: 5, border: '1px solid #ccc', width: '80%' }} />
           </label>
-          <label>
+          <label style={{ fontWeight: 'bold' }}>
             Select Course:
-            <select name="course" value={formData.course} onChange={handleInputChange}>
+            <select name="course" value={formData.course} onChange={handleInputChange} style={{ marginLeft: 8, padding: 6, borderRadius: 5, border: '1px solid #ccc', width: '80%' }}>
               <option value="Elementary">Elementary</option>
               <option value="Intermediate">Intermediate</option>
               <option value="Advanced">Advanced</option>
             </select>
           </label>
-          <button type="submit">Proceed to Payment</button>
+          <label style={{ fontWeight: 'bold' }}>
+            Coupon Code:
+            <input
+              type="text"
+              name="coupon"
+              value={coupon}
+              onChange={e => setCoupon(e.target.value.trim().toUpperCase())}
+              style={{ marginLeft: 8, padding: 6, borderRadius: 5, border: '1px solid #ccc', width: '60%' }}
+            />
+            {couponMessage && (
+              <span style={{ color: couponMessage.includes('off') ? 'green' : 'red', marginLeft: 10, fontWeight: 'bold' }}>{couponMessage}</span>
+            )}
+          </label>
+          <div style={{ fontWeight: 'bold', fontSize: '1.1rem', color: '#80178a', marginTop: 8 }}>
+            Payable Amount: ₹{(finalAmount / 100).toLocaleString('en-IN')}
+            {discount > 0 && (
+              <span style={{ color: '#388e3c', marginLeft: 10 }}>(Discount Applied)</span>
+            )}
+          </div>
+          <button type="submit" style={{ background: '#80178a', color: '#fff', padding: '10px 0', border: 'none', borderRadius: 6, fontWeight: 'bold', fontSize: '1.1rem', cursor: 'pointer', marginTop: 10, boxShadow: '0 2px 6px #e0d7ee' }}>Proceed to Payment</button>
         </form>
-        <button onClick={closeModal}>Close</button>
+        <button onClick={closeModal} style={{ marginTop: 10, background: '#fff', color: '#80178a', border: '1px solid #80178a', borderRadius: 6, padding: '8px 0', fontWeight: 'bold', cursor: 'pointer' }}>Close</button>
       </Modal>
     </div>
   );

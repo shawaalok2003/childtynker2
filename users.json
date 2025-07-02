@@ -15,5 +15,16 @@
     "password": "iD3HZxPTv54Q3Mj",
     "role": "teacher",
     "wallet": 0
+  },
+  {
+    "email": "aalok@childtynker.com",
+    "password": "Aalok@6290",
+    "role": "student"
+  },
+  {
+    "email": "aalok2@childtynker.com",
+    "password": "Aalok@6290",
+    "role": "teacher",
+    "wallet": 0
   }
 ]
