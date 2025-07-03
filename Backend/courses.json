@@ -36,5 +36,68 @@
     "completed": true,
     "quiz": [],
     "schedule": ""
+  },
+  {
+    "id": "course_1751572009118",
+    "title": "",
+    "description": "",
+    "teacher": "",
+    "completed": false,
+    "quiz": [],
+    "schedule": ""
+  },
+  {
+    "id": "course_1751572009428",
+    "title": "",
+    "description": "",
+    "teacher": "",
+    "completed": false,
+    "quiz": [],
+    "schedule": ""
+  },
+  {
+    "id": "course_1751572009829",
+    "title": "",
+    "description": "",
+    "teacher": "",
+    "completed": false,
+    "quiz": [],
+    "schedule": ""
+  },
+  {
+    "id": "course_1751572016924",
+    "title": "hey",
+    "description": "hey",
+    "teacher": "",
+    "completed": false,
+    "quiz": [],
+    "schedule": ""
+  },
+  {
+    "id": "course_1751572017386",
+    "title": "",
+    "description": "",
+    "teacher": "",
+    "completed": false,
+    "quiz": [],
+    "schedule": ""
+  },
+  {
+    "id": "course_1751572169204",
+    "title": "",
+    "description": "",
+    "teacher": "",
+    "completed": false,
+    "quiz": [],
+    "schedule": ""
+  },
+  {
+    "id": "course_1751572344101",
+    "title": "hey",
+    "description": "",
+    "teacher": "a@gmail.com",
+    "completed": false,
+    "quiz": [],
+    "schedule": ""
   }
 ]

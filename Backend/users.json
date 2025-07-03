@@ -2,27 +2,116 @@
   {
     "email": "aalokshaw2003@gmail.com",
     "password": "Aalok@6290",
-    "role": "student"
+    "role": "student",
+    "profile": {
+      "name": "",
+      "guardian": "",
+      "phone": ""
+    },
+    "enrolledCourses": [],
+    "schedule": [],
+    "quizzes": [],
+    "wallet": 0
   },
   {
     "email": "Childtynker@gmail.com",
     "password": "Child@2345",
-    "role": "student"
+    "role": "student",
+    "profile": {
+      "name": "",
+      "guardian": "",
+      "phone": ""
+    },
+    "enrolledCourses": [],
+    "schedule": [],
+    "quizzes": [],
+    "wallet": 0
   },
   {
     "email": "hey@gmail.com",
     "password": "hey@2345",
-    "role": "student"
+    "role": "student",
+    "profile": {
+      "name": "",
+      "guardian": "",
+      "phone": ""
+    },
+    "enrolledCourses": [],
+    "schedule": [],
+    "quizzes": [],
+    "wallet": 0
   },
   {
     "email": "a@gmail.com",
     "password": "Aalok@6290",
-    "role": "teacher"
+    "role": "teacher",
+    "profile": {
+      "name": "",
+      "guardian": "",
+      "phone": ""
+    },
+    "enrolledCourses": [],
+    "schedule": [],
+    "quizzes": [],
+    "wallet": 0
   },
   {
     "email": "aalokshaw@gmail.com",
     "password": "Aalok@2345",
     "role": "teacher",
+    "profile": {
+      "name": "",
+      "guardian": "",
+      "phone": ""
+    },
+    "enrolledCourses": [],
+    "schedule": [],
+    "quizzes": [],
+    "wallet": 0
+  },
+  {
+    "email": "aalokchildtynker@gmail.com",
+    "password": "Aalok@6290",
+    "role": "student",
+    "profile": {
+      "name": "Aalok Shaw",
+      "guardian": "Ratan Kumar Shaw",
+      "phone": "6290529857"
+    },
+    "enrolledCourses": [
+      "course_1751572017386",
+      "course_1749930726431"
+    ],
+    "schedule": [],
+    "quizzes": [],
+    "wallet": 0
+  },
+  {
+    "email": "a4@gmail.com",
+    "password": "Aalok@6290",
+    "role": "student",
+    "profile": {
+      "name": "",
+      "guardian": "",
+      "phone": ""
+    },
+    "enrolledCourses": [],
+    "schedule": [],
+    "quizzes": [],
+    "wallet": 0
+  },
+  {
+    "email": "aalokchildtynker@gmail.com",
+    "password": "yourpassword",
+    "role": "student",
+    "profile": {
+      "name": "",
+      "guardian": "",
+      "phone": ""
+    },
+    "enrolledCourses": [],
+    "schedule": [],
+    "quizzes": [],
     "wallet": 0
   }
 ]

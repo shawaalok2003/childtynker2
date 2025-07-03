@@ -26,7 +26,7 @@
   {
     "email": "aalokshaw@gmail.com",
     "amount": 100,
-    "status": "pending",
+    "status": "approved",
     "requestedAt": "2025-06-14T20:06:51.241Z"
   }
 ]
