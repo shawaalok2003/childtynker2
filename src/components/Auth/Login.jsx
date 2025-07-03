@@ -21,7 +21,12 @@ const Login = () => {
     e.preventDefault();
     try {
       await axios.post("http://localhost:5000/api/login", formData);
-      navigate("/dashboard", { state: { ...formData } });
+      localStorage.setItem('userEmail', formData.email);
+      if (formData.role === "student") {
+        navigate("/dashboard/student");
+      } else if (formData.role === "teacher") {
+        navigate("/dashboard/teacher");
+      }
     } catch (err) {
       setError("Invalid credentials");
     }
