@@ -7,7 +7,7 @@ const StudentProfile = ({ student, onUpdate }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    await fetch('http://localhost:5000/api/profile/update', {
+    await fetch('https://childtynker-backend-3.onrender.com/api/profile/update', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: student.email, profile: form }),

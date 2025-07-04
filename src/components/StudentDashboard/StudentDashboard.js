@@ -11,7 +11,7 @@ const JoinCourseModal = ({ open, onClose, userEmail, onJoin }) => {
 
   useEffect(() => {
     if (open) {
-      fetch('http://localhost:5000/api/courses')
+      fetch('https://childtynker-backend-3.onrender.com/api/courses')
         .then(res => res.json())
         .then(data => setCourses(data));
     }
@@ -20,7 +20,7 @@ const JoinCourseModal = ({ open, onClose, userEmail, onJoin }) => {
   const handleJoin = async (courseId) => {
     setJoining(true);
     setMessage('');
-    const res = await fetch('http://localhost:5000/api/dashboard/student/join-course', {
+    const res = await fetch('https://childtynker-backend-3.onrender.com/api/dashboard/student/join-course', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: userEmail, courseId })
@@ -70,7 +70,7 @@ const StudentDashboard = ({ userEmail, onLogout }) => {
       navigate('/login');
       return;
     }
-    fetch(`http://localhost:5000/api/dashboard/student/${userEmail}`)
+    fetch(`https://childtynker-backend-3.onrender.com/api/dashboard/student/${userEmail}`)
       .then(res => res.json())
       .then(data => setStudent(data));
   }, [userEmail, navigate]);
@@ -81,7 +81,7 @@ const StudentDashboard = ({ userEmail, onLogout }) => {
   };
 
   const refreshStudent = () => {
-    fetch(`http://localhost:5000/api/dashboard/student/${userEmail}`)
+    fetch(`https://childtynker-backend-3.onrender.com/api/dashboard/student/${userEmail}`)
       .then(res => res.json())
       .then(data => setStudent(data));
   };
@@ -162,7 +162,7 @@ const StudentDashboard = ({ userEmail, onLogout }) => {
                       className="save-btn"
                       style={{ marginLeft: 10, fontSize: 12, padding: '4px 10px' }}
                       onClick={async () => {
-                        await fetch('http://localhost:5000/api/dashboard/student/complete-quiz', {
+                        await fetch('https://childtynker-backend-3.onrender.com/api/dashboard/student/complete-quiz', {
                           method: 'POST',
                           headers: { 'Content-Type': 'application/json' },
                           body: JSON.stringify({ email: userEmail, quizId: q.id }),

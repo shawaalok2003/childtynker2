@@ -6,7 +6,7 @@ const StudentCourses = ({ userEmail }) => {
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/courses/student/${userEmail}`)
+    fetch(`https://childtynker-backend-3.onrender.com/api/courses/student/${userEmail}`)
       .then(res => res.json())
       .then(data => setCourses(data));
   }, [userEmail]);

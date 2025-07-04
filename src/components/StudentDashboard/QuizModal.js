@@ -9,7 +9,7 @@ const QuizModal = ({ quiz, userEmail, onClose }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const res = await fetch('http://localhost:5000/api/quiz/submit', {
+    const res = await fetch('https://childtynker-backend-3.onrender.com/api/quiz/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: userEmail, quizId: quiz.id, answers }),

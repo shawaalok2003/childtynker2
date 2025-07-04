@@ -5,7 +5,7 @@ const TeacherDashboard = ({ userEmail }) => {
   const [teacher, setTeacher] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/dashboard/teacher/${userEmail}`)
+    axios.get(`https://childtynker-backend-3.onrender.com/api/dashboard/teacher/${userEmail}`)
       .then(res => setTeacher(res.data))
       .catch(err => console.error(err));
   }, [userEmail]);

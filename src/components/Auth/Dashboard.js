@@ -16,25 +16,25 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (state?.role === "teacher") {
-      axios.get(`http://localhost:5000/api/courses/teacher/${state.email}`)
+      axios.get(`https://childtynker-backend-3.onrender.com/api/courses/teacher/${state.email}`)
         .then(res => setCourses(res.data));
     } else if (state?.role === "student") {
-      axios.get("http://localhost:5000/api/courses").then(res => setCourses(res.data));
+      axios.get("https://childtynker-backend-3.onrender.com/api/courses").then(res => setCourses(res.data));
     }
 
-    axios.get("http://localhost:5000/api/users").then(res => {
+    axios.get("https://childtynker-backend-3.onrender.com/api/users").then(res => {
       const user = res.data.find(u => u.email === state.email);
       if (user) setWallet(user.wallet || 0);
     });
 
-   axios.get(`http://localhost:5000/api/teacher-wallet/${state.email}`).then(res => {
+   axios.get(`https://childtynker-backend-3.onrender.com/api/teacher-wallet/${state.email}`).then(res => {
   setLastWithdrawal(res.data.lastWithdrawal || null);
 });
   }, [state]);
 
   const handleCompleteClass = async (courseId) => {
     try {
-      const res = await axios.post("http://localhost:5000/api/complete-class", {
+      const res = await axios.post("https://childtynker-backend-3.onrender.com/api/complete-class", {
         email: state.email,
         courseId
       });
@@ -55,7 +55,7 @@ const Dashboard = () => {
       return;
     }
     setWithdrawRequested(true);
-    await axios.post("http://localhost:5000/api/withdraw", {
+    await axios.post("https://childtynker-backend-3.onrender.com/api/withdraw", {
       email: state.email,
       amount: withdrawAmount
     });

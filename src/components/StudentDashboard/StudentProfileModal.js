@@ -14,7 +14,7 @@ const StudentProfileModal = ({ profile, userEmail, onSave, onClose }) => {
   const handleSubmit = async e => {
     e.preventDefault();
     setSaving(true);
-    await fetch('http://localhost:5000/api/dashboard/student/update-profile', {
+    await fetch('https://childtynker-backend-3.onrender.com/api/dashboard/student/update-profile', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: userEmail, profile: form }),

@@ -9,27 +9,27 @@ const AdminPanel = () => {
   const [newCourse, setNewCourse] = useState({ title: "", teacher: "", description: "" });
 
   const fetchWithdrawals = async () => {
-    const res = await axios.get("http://localhost:5000/api/withdrawals");
+    const res = await axios.get("https://childtynker-backend-3.onrender.com/api/withdrawals");
     setWithdrawals(res.data);
   };
 
   const fetchUsers = async () => {
-    const res = await axios.get("http://localhost:5000/api/users");
+    const res = await axios.get("https://childtynker-backend-3.onrender.com/api/users");
     setUsers(res.data.filter((u) => u.role === "teacher"));
   };
 
   const fetchCourses = async () => {
-    const res = await axios.get("http://localhost:5000/api/courses?all=true");
+    const res = await axios.get("https://childtynker-backend-3.onrender.com/api/courses?all=true");
     setCourses(res.data);
   };
 
   const updateStatus = async (email, requestedAt, status) => {
-    await axios.post("http://localhost:5000/api/withdrawals/update", { email, requestedAt, status });
+    await axios.post("https://childtynker-backend-3.onrender.com/api/withdrawals/update", { email, requestedAt, status });
     fetchWithdrawals();
   };
 
   const handleCreateCourse = async () => {
-    await axios.post("http://localhost:5000/api/create-course", newCourse);
+    await axios.post("https://childtynker-backend-3.onrender.com/api/create-course", newCourse);
     fetchCourses();
     setNewCourse({ title: "", teacher: "", description: "" });
   };

@@ -6,7 +6,7 @@ const StudentQuizzes = ({ userEmail }) => {
   const [activeQuiz, setActiveQuiz] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/quiz/student/${userEmail}`)
+    fetch(`https://childtynker-backend-3.onrender.com/api/quiz/student/${userEmail}`)
       .then(res => res.json())
       .then(data => setQuizzes(data));
   }, [userEmail]);

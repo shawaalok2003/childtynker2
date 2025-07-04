@@ -20,7 +20,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/login", formData);
+      await axios.post("https://childtynker-backend-3.onrender.com/api/login", formData);
       localStorage.setItem('userEmail', formData.email);
       if (formData.role === "student") {
         navigate("/dashboard/student");

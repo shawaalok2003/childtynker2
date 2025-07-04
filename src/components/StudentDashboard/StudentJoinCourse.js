@@ -5,17 +5,17 @@ const StudentJoinCourse = ({ userEmail, onCourseJoined }) => {
   const [joined, setJoined] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/courses')
+    fetch('https://childtynker-backend-3.onrender.com/api/courses')
       .then(res => res.json())
       .then(data => setCourses(data));
     // Fetch joined courses for the student
-    fetch(`http://localhost:5000/api/courses/student/${userEmail}`)
+    fetch(`https://childtynker-backend-3.onrender.com/api/courses/student/${userEmail}`)
       .then(res => res.json())
       .then(data => setJoined(data.map(c => c.id)));
   }, [userEmail]);
 
   const handleJoin = async (courseId) => {
-    await fetch('http://localhost:5000/api/courses/join', {
+    await fetch('https://childtynker-backend-3.onrender.com/api/courses/join', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: userEmail, courseId }),

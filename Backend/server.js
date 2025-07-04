@@ -3,8 +3,10 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const bodyParser = require("body-parser");
+const Razorpay = require("razorpay");
+require("dotenv").config();
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 const USERS_FILE = "./users.json";
 const COURSES_FILE = "./courses.json";
@@ -15,6 +17,12 @@ app.use(bodyParser.json());
 
 const readFile = (path) => (fs.existsSync(path) ? JSON.parse(fs.readFileSync(path)) : []);
 const writeFile = (path, data) => fs.writeFileSync(path, JSON.stringify(data, null, 2));
+
+// Initialize Razorpay
+const razorpay = new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID || 'rzp_live_a8Hc5dJCBEsE0Y',
+    key_secret: process.env.RAZORPAY_KEY_SECRET || 'd8Ya5ci807WpqZPy1QJz0XGX',
+});
 
 // AUTH ROUTES
 app.post("/api/signup", (req, res) => {
@@ -309,6 +317,37 @@ app.get("/api/teacher-wallet/:email", (req, res) => {
 app.get("/api/users", (req, res) => {
   const users = readFile(USERS_FILE);
   res.json(users);
+});
+
+// POST: Create payment link
+app.post("/create-payment-link", async (req, res) => {
+  try {
+    const { amount, currency, customer } = req.body;
+
+    const paymentLink = await razorpay.paymentLink.create({
+      amount,
+      currency,
+      accept_partial: false,
+      description: `Payment for ${customer.name}`,
+      customer: {
+        name: customer.name,
+        email: customer.email,
+        contact: customer.contact,
+      },
+      notify: {
+        sms: true,
+        email: true,
+      },
+      reminder_enable: true,
+      callback_url: "https://childtynker.com/payment-success",
+      callback_method: "get",
+    });
+
+    res.json({ success: true, short_url: paymentLink.short_url });
+  } catch (error) {
+    console.error("Error generating payment link:", error);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
 });
 
 app.listen(PORT, () => {

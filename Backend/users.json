@@ -113,5 +113,19 @@
     "schedule": [],
     "quizzes": [],
     "wallet": 0
+  },
+  {
+    "email": "diti@gmail.com",
+    "password": "Aalok@6290",
+    "role": "student",
+    "profile": {
+      "name": "",
+      "guardian": "",
+      "phone": ""
+    },
+    "enrolledCourses": [],
+    "schedule": [],
+    "quizzes": [],
+    "wallet": 0
   }
 ]
