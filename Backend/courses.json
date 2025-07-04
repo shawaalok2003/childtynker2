@@ -99,5 +99,14 @@
     "completed": false,
     "quiz": [],
     "schedule": ""
+  },
+  {
+    "id": "course_1712345678901",
+    "title": "WiseChild Package Elementary",
+    "description": "",
+    "teacher": "",
+    "completed": false,
+    "quiz": [],
+    "schedule": ""
   }
 ]

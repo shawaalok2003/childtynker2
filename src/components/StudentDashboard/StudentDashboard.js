@@ -63,6 +63,9 @@ const StudentDashboard = ({ userEmail, onLogout }) => {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [courseModalOpen, setCourseModalOpen] = useState(false);
   const [joinModalOpen, setJoinModalOpen] = useState(false);
+  const [skipped, setSkipped] = useState(false);
+  const [joinMessage, setJoinMessage] = useState('');
+  const [selectedAge, setSelectedAge] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -97,6 +100,111 @@ const StudentDashboard = ({ userEmail, onLogout }) => {
   const schedule = Array.isArray(student.schedule) ? student.schedule : [];
   const quizzes = Array.isArray(student.quizzes) ? student.quizzes : [];
 
+  // List of all available courses (from CourseCards.js, simplified)
+  const availableCourses = [
+    { id: 'wisechild-elementary', name: 'WiseChild Package Elementary', age: '3+', sessions: 32, description: 'BIS Certified Kit, 1:1 Live Classes by IIT/NIT Experts, STEM.org Accreditation', duration: '3 months', route: '/wise-child' },
+    { id: 'wisechild-intermediate', name: 'WiseChild Package Intermediate', age: '3+', sessions: 64, description: 'BIS Certified Kit, 1:1 Live Classes by IIT/NIT Experts, STEM.org Accreditation', duration: '6 months', route: '/wise-child' },
+    { id: 'wisechild-advanced', name: 'WiseChild Package Advanced', age: '3+', sessions: 96, description: 'BIS Certified Kit, 1:1 Live Classes by IIT/NIT Experts, STEM.org Accreditation', duration: '9 months', route: '/wise-child' },
+    { id: 'alpha-a', name: 'Alpha A', age: '6+', sessions: 32, description: 'BIS Certified Kit, 1:1 Live Classes by IIT/NIT Experts, STEM.org Accreditation', duration: '3 months', route: '/alpha-series' },
+    { id: 'alpha-b', name: 'Alpha B', age: '6+', sessions: 64, description: 'BIS Certified Kit, 1:1 Live Classes by IIT/NIT Experts, STEM.org Accreditation', duration: '6 months', route: '/alpha-series' },
+    { id: 'alpha-c', name: 'Alpha C', age: '6+', sessions: 96, description: 'BIS Certified Kit, 1:1 Live Classes by IIT/NIT Experts, STEM.org Accreditation', duration: '9 months', route: '/alpha-series' },
+    { id: 'alpha-x', name: 'Alpha X', age: '6+', sessions: 96, description: 'BIS Certified Kit, 1:1 Live Classes by IIT/NIT Experts, STEM.org Accreditation', duration: '9 months', route: '/alpha-series' },
+    { id: 'starter', name: 'Starter', age: '8+', sessions: 30, description: 'BIS Certified Kit, 1:1 Live Classes by IIT/NIT Experts, STEM.org Accreditation', duration: '3 months', route: '/pioneer-package' },
+    { id: 'pioneer', name: 'Pioneer', age: '8+', sessions: 60, description: 'BIS Certified Kit, 1:1 Live Classes by IIT/NIT Experts, STEM.org Accreditation', duration: '6 months', route: '/pioneer-package' },
+    { id: 'adventure', name: 'Adventure', age: '8+', sessions: 100, description: 'BIS Certified Kit, 1:1 Live Classes by IIT/NIT Experts, STEM.org Accreditation', duration: '9 months', route: '/pioneer-package' },
+    { id: 'drone', name: 'Drone Programming', age: '10+', sessions: 36, description: 'Drone Hardware, Basic Drone Programming', duration: '2 months', route: '/drone-package' },
+    { id: 'defender', name: 'AI and IoT Applications', age: '10+', sessions: 50, description: 'WiseKit Platform, AI & IoT Integration', duration: '3 months', route: '/defender-wisekit' },
+    { id: 'iot-mastery', name: 'IoT Mastery and AI/ML Integration Projects', age: '12+', sessions: 50, description: 'IoT Projects, Embedded Systems', duration: '3 months', route: '/iot-master-package' },
+    { id: 'ml-basics', name: 'Machine Learning', age: '12+', sessions: 100, description: 'ML Algorithms, Python Integration', duration: '6 months', route: '/aiml-master-package' },
+  ];
+
+  // Age groups for selection
+  const ageGroups = [
+    { label: '3-5', value: '3' },
+    { label: '6-9', value: '6' },
+    { label: '10-11', value: '10' },
+    { label: '12+', value: '12' },
+  ];
+
+  // Filter courses by selected age
+  const filteredCourses = selectedAge
+    ? availableCourses.filter(c => {
+        const ageNum = parseInt(c.age);
+        return ageNum <= parseInt(selectedAge);
+      })
+    : [];
+
+  // If already enrolled, show message
+  if (enrolledCourses.length > 0) {
+    return (
+      <div className="student-dashboard-modern">
+        <header className="dashboard-header">
+          <h2>Student Dashboard</h2>
+          <button className="logout-btn" onClick={onLogout}>Logout</button>
+        </header>
+        <main className="dashboard-content">
+          <div className="dashboard-card courses-card">
+            <h3>Already enrolled in a course.</h3>
+            <ul className="courses-list">
+              {enrolledCourses.map(c => (
+                <li key={c.courseId || c.id} className="course-item">
+                  <div className="course-title">{c.title}</div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  // If no courses joined, show age selection first
+  if (enrolledCourses.length === 0 && !skipped) {
+    return (
+      <div className="student-dashboard-modern">
+        <header className="dashboard-header">
+          <h2>Student Dashboard</h2>
+          <button className="logout-btn" onClick={onLogout}>Logout</button>
+        </header>
+        <main className="dashboard-content">
+          <div className="dashboard-card courses-card">
+            <h3>Select Your Age Group</h3>
+            <div style={{ marginBottom: 20 }}>
+              {ageGroups.map(a => (
+                <button
+                  key={a.value}
+                  className={`age-btn${selectedAge === a.value ? ' selected' : ''}`}
+                  style={{ marginRight: 10, marginBottom: 10 }}
+                  onClick={() => setSelectedAge(a.value)}
+                >
+                  {a.label}
+                </button>
+              ))}
+            </div>
+            {selectedAge && (
+              <>
+                <h3>Available Courses</h3>
+                {joinMessage && <div className="join-message">{joinMessage}</div>}
+                <ul className="courses-list">
+                  {filteredCourses.map(c => (
+                    <li key={c.id} className="course-item">
+                      <div className="course-title">{c.name} <span style={{fontSize:12, color:'#93339e'}}>({c.age})</span></div>
+                      <div className="course-desc">{c.description}</div>
+                      <div className="course-sessions">Sessions: {c.sessions} | Duration: {c.duration}</div>
+                      <button className="join-btn" onClick={() => navigate(c.route)}>Join</button>
+                    </li>
+                  ))}
+                </ul>
+                <button className="skip-btn" style={{marginTop: 20}} onClick={() => setSkipped(true)}>Skip</button>
+              </>
+            )}
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  // If courses joined, or skipped, show class/session breakdown for each
   return (
     <div className="student-dashboard-modern">
       <header className="dashboard-header">
@@ -122,24 +230,38 @@ const StudentDashboard = ({ userEmail, onLogout }) => {
               <div className="wallet-balance">₹{student.wallet || 0}</div>
             </div>
           </div>
-          <div className="dashboard-card courses-card">
-  <h3>My Courses</h3>
-  <ul className="courses-list">
-    {enrolledCourses.length === 0 ? (
-      <li>No courses assigned yet.</li>
-    ) : (
-      enrolledCourses.map(c => (
-        <li key={c.courseId || c.id} className="course-item" onClick={() => { setSelectedCourse(c); setCourseModalOpen(true); }}>
-          <div className="course-title">{c.title}</div>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: `${c.progress || 0}%` }}></div>
-          </div>
-          <span className="progress-label">{c.progress || 0}%</span>
-        </li>
-      ))
-    )}
-  </ul>
-</div>
+          {enrolledCourses.length === 0 && skipped && (
+            <div className="dashboard-card courses-card">
+              <h3>No Courses Joined</h3>
+              <p>You have not joined any courses yet. You can join a course anytime from the courses section.</p>
+            </div>
+          )}
+          {enrolledCourses.length > 0 && (
+            <div className="dashboard-card courses-card">
+              <h3>My Courses</h3>
+              <ul className="courses-list">
+                {enrolledCourses.map(c => (
+                  <li key={c.courseId || c.id} className="course-item" onClick={() => { setSelectedCourse(c); setCourseModalOpen(true); }}>
+                    <div className="course-title">{c.title}</div>
+                    <div className="progress-bar">
+                      <div className="progress" style={{ width: `${c.progress || 0}%` }}></div>
+                    </div>
+                    <span className="progress-label">{c.progress || 0}%</span>
+                    {/* Show class/session breakdown if available */}
+                    {Array.isArray(c.sessions) && c.sessions.length > 0 && (
+                      <ul className="session-breakdown">
+                        {c.sessions.map((s, idx) => (
+                          <li key={idx} className="session-item">
+                            <span className="session-title">Class {idx + 1}: {s.topic}</span> <span className="session-date">{s.date}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           <div className="dashboard-card sessions-card">
             <h3>Upcoming Sessions</h3>
             <ul className="sessions-list">

@@ -105,7 +105,7 @@ function App() {
             <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/dashboard" element={<Dashboard/>} />
-         <Route path="/dashboard/teacher" element={<TeacherDashboard/>} />
+        <Route path="/dashboard/teacher" element={<TeacherDashboard userEmail={localStorage.getItem('userEmail')} />} />
          <Route path="/dashboard/student/*" element={<StudentDashboard userEmail={localStorage.getItem('userEmail')} />} />
           <Route path="/" element={<EducatorListPage />} />
            <Route path="/admin" element={<AdminPanel/>} />

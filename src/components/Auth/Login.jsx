@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css"; // Make sure to create this CSS file
 
 const carouselImages = [
-  "/images/login1.jpg",
-  "/images/login2.jpg",
-  "/images/login3.jpg",
+  "https://cdn.pixabay.com/photo/2017/08/30/16/16/robot-2697683_1280.png",
+  "https://cdn.pixabay.com/photo/2023/01/15/18/25/ai-generated-7720850_1280.jpg",
+  "https://cdn.pixabay.com/photo/2024/06/07/17/12/robot-8815014_1280.jpg",
 ];
 
 const Login = () => {
@@ -59,11 +59,11 @@ const Login = () => {
         </p>
       </div>
 
-      <div className="carousel-container">
+      <div className="login-carousel-container">
         <img
           src={carouselImages[currentImageIndex]}
           alt="carousel"
-          className="carousel-image"
+          className="login-carousel-image"
         />
       </div>
     </div>

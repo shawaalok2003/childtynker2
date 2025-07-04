@@ -349,6 +349,78 @@ app.post("/create-payment-link", async (req, res) => {
     res.status(500).json({ success: false, message: "Server error" });
   }
 });
+app.post("/api/courses/:courseId/classes", (req, res) => {
+  const { courseId } = req.params;
+  const { classes } = req.body; // classes: [{date, time, topic, meetLink}]
+  const courses = readFile(COURSES_FILE);
+  const course = courses.find(c => c.id === courseId);
+  if (!course) return res.status(404).json({ message: "Course not found" });
+
+  course.classes = classes; // Overwrite or update
+  writeFile(COURSES_FILE, courses);
+  res.json({ message: "Classes updated", classes: course.classes });
+});
+
+// Get classes for a course (Student)
+app.get("/api/courses/:courseId/classes", (req, res) => {
+  const { courseId } = req.params;
+  const courses = readFile(COURSES_FILE);
+  const course = courses.find(c => c.id === courseId);
+  if (!course) return res.status(404).json({ message: "Course not found" });
+  res.json(course.classes || []);
+});
+
+// Admin: Allot a course to a student
+app.post("/api/admin/allot-course", (req, res) => {
+  const { studentEmail, courseId } = req.body;
+  const users = readFile(USERS_FILE);
+  const courses = readFile(COURSES_FILE);
+
+  const user = users.find(u => u.email === studentEmail && u.role === "student");
+  const course = courses.find(c => c.id === courseId);
+
+  if (!user) return res.status(404).json({ message: "Student not found" });
+  if (!course) return res.status(404).json({ message: "Course not found" });
+
+  if (!user.enrolledCourses) user.enrolledCourses = [];
+  if (user.enrolledCourses.includes(courseId)) {
+    return res.status(400).json({ message: "Student already enrolled in this course" });
+  }
+  user.enrolledCourses.push(courseId);
+  writeFile(USERS_FILE, users);
+  res.json({ message: "Course allotted successfully", enrolledCourses: user.enrolledCourses });
+});
+
+// Get teacher dashboard data by email
+app.get("/api/dashboard/teacher/:email", (req, res) => {
+  const { email } = req.params;
+  const users = readFile(USERS_FILE);
+  const courses = readFile(COURSES_FILE);
+  
+  const teacher = users.find(u => u.email === email && u.role === "teacher");
+  if (!teacher) return res.status(404).json({ message: "Teacher not found" });
+
+  // Get teacher's courses
+  const teacherCourses = courses.filter(c => c.teacher === email);
+  
+  // Create upcoming classes from teacher's courses
+  const upcomingClasses = teacherCourses.map(course => ({
+    classId: course.id,
+    title: course.title,
+    date: course.schedule || "TBD",
+    students: course.enrolledStudents || 0
+  }));
+
+  const teacherData = {
+    email: teacher.email,
+    profile: teacher.profile || { name: "", phone: "" },
+    wallet: teacher.wallet || 0,
+    upcomingClasses: upcomingClasses,
+    courses: teacherCourses
+  };
+
+  res.json(teacherData);
+});
 
 app.listen(PORT, () => {
   console.log(`✅ Server is running at http://localhost:${PORT}`);
