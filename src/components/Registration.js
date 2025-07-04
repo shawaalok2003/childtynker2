@@ -1,124 +1,154 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./RegistrationPage.css";
 
+const carouselImages = [
+  "https://cdn.pixabay.com/photo/2017/08/30/16/16/robot-2697683_1280.png",
+  "https://cdn.pixabay.com/photo/2023/01/15/18/25/ai-generated-7720850_1280.jpg",
+  "https://cdn.pixabay.com/photo/2024/06/07/17/12/robot-8815014_1280.jpg",
+];
+
 const RegistrationPage = () => {
   const navigate = useNavigate();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Parent details
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [occupation, setOccupation] = useState("");
-  const [relationship, setRelationship] = useState("");
+  // Simplified form fields
+  const [studentName, setStudentName] = useState("");
+  const [studentAge, setStudentAge] = useState("");
+  const [mobileNumber, setMobileNumber] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Child details
-  const [childName, setChildName] = useState("");
-  const [childAge, setChildAge] = useState("");
-  const [childGender, setChildGender] = useState("");
-  const [childInterests, setChildInterests] = useState("");
+  // Carousel Logic
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % carouselImages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
-  const handleSubmit = (e) => {
+  // Validation functions
+  const isValidName = (name) => name.trim().length >= 2;
+  const isValidAge = (age) => age >= 3 && age <= 16;
+  const isValidMobile = (mobile) => /^\d{10}$/.test(mobile);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Optional: Validate or send form data to backend
+    
+    // Validate form data
+    if (!isValidName(studentName)) {
+      alert("Please enter a valid student name (at least 2 characters)");
+      return;
+    }
+    
+    if (!isValidAge(studentAge)) {
+      alert("Please enter a valid age between 3 and 16 years");
+      return;
+    }
+    
+    if (!isValidMobile(mobileNumber)) {
+      alert("Please enter a valid 10-digit mobile number");
+      return;
+    }
 
-    // Navigate to course selection
-    navigate("/select-course");
+    setIsSubmitting(true);
+
+    try {
+      // Store registration data
+      const registrationData = {
+        studentName: studentName.trim(),
+        studentAge: parseInt(studentAge),
+        mobileNumber: mobileNumber,
+        registrationDate: new Date().toISOString(),
+        id: Date.now() // Simple unique ID
+      };
+
+      // Store in localStorage
+      const existingRegistrations = JSON.parse(localStorage.getItem('studentRegistrations') || '[]');
+      existingRegistrations.push(registrationData);
+      localStorage.setItem('studentRegistrations', JSON.stringify(existingRegistrations));
+
+      // Also store current student data for session
+      localStorage.setItem('currentStudent', JSON.stringify(registrationData));
+
+      console.log("Registration data stored:", registrationData);
+      
+      // Show success message
+      alert("Registration successful! Welcome to ChildTynker!");
+      
+      // Navigate to course selection or dashboard
+      navigate("/booking");
+      
+    } catch (error) {
+      console.error("Error storing registration data:", error);
+      alert("Registration failed. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <div className="registration-page">
-      <h1>Register for Your Free Class</h1>
-      <form onSubmit={handleSubmit}>
-        {/* Parent Details */}
-        <div className="form-group">
-          <label>Name (Parent/Guardian):</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
+    <div className="registration-wrapper">
+      <div className="form-container">
+        <h2>Student Registration</h2>
+        <p className="subtitle">Join our robotics & coding adventure!</p>
+        
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Student Name"
+              value={studentName}
+              onChange={(e) => setStudentName(e.target.value)}
+              required
+              minLength="2"
+            />
+          </div>
 
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
+          <div className="form-group">
+            <input
+              type="number"
+              placeholder="Student Age (3-16 years)"
+              min="3"
+              max="16"
+              value={studentAge}
+              onChange={(e) => setStudentAge(e.target.value)}
+              required
+            />
+          </div>
 
-        <div className="form-group">
-          <label>Phone:</label>
-          <input
-            type="tel"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            required
-          />
-        </div>
+          <div className="form-group">
+            <input
+              type="tel"
+              placeholder="Mobile Number (10 digits)"
+              value={mobileNumber}
+              onChange={(e) => setMobileNumber(e.target.value.replace(/\D/g, ''))}
+              required
+              maxLength="10"
+              pattern="[0-9]{10}"
+            />
+          </div>
 
-        {/* Optional Fields */}
-        <div className="form-group">
-          <label>Occupation:</label>
-          <input
-            type="text"
-            value={occupation}
-            onChange={(e) => setOccupation(e.target.value)}
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Relationship to Child:</label>
-          <input
-            type="text"
-            value={relationship}
-            onChange={(e) => setRelationship(e.target.value)}
-          />
-        </div>
-
-        {/* Child Details */}
-        <div className="form-group">
-          <label>Child Name:</label>
-          <input
-            type="text"
-            value={childName}
-            onChange={(e) => setChildName(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Child Age:</label>
-          <input
-            type="number"
-            min="1"
-            value={childAge}
-            onChange={(e) => setChildAge(e.target.value)}
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Child's Gender:</label>
-          <select
-            value={childGender}
-            onChange={(e) => setChildGender(e.target.value)}
-            required
+          <button 
+            type="submit" 
+            className="submit-btn"
+            disabled={isSubmitting}
           >
-            <option value="">Select</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
+            {isSubmitting ? "Registering..." : "Register for Free Class"}
+          </button>
+        </form>
+        
+        <p className="login-text">
+          Already have an account? <a href="/login">Login</a>
+        </p>
+      </div>
 
-        <button type="submit" className="submit-button">
-          Next
-        </button>
-      </form>
+      <div className="registration-carousel-container">
+        <img
+          src={carouselImages[currentImageIndex]}
+          alt="carousel"
+          className="registration-carousel-image"
+        />
+      </div>
     </div>
   );
 };

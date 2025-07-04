@@ -104,8 +104,8 @@ const Navbar = () => {
               <li><NavLink to="/aiml-master-package">AI/ML Master Package</NavLink></li>
             </ul>
           </li>
+          <li><NavLink to="/playzone">Play Zone</NavLink></li>
           <li><NavLink to="/our-partners">Our Partners</NavLink></li>
-          <li><NavLink to="/testimonials">Testimonials</NavLink></li>
         </ul>
 
         {/* Hamburger Menu Button - Only visible on mobile */}
@@ -150,6 +150,7 @@ const Navbar = () => {
               </ul>
             </li>
             
+            <li><NavLink to="/playzone" onClick={() => setMobileMenuOpen(false)}>Play Zone</NavLink></li>
             <li><NavLink to="/our-partners" onClick={() => setMobileMenuOpen(false)}>Our Partners</NavLink></li>
             <li><NavLink to="/testimonials" onClick={() => setMobileMenuOpen(false)}>Testimonials</NavLink></li>
           </ul>

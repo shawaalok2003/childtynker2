@@ -8,25 +8,25 @@ const AchievementsSection = () => {
           <div className="stat-image">
             <img src="/images/ForkidsAge3-16yr-mi.jpeg" alt="Students" />
           </div>
-          <p>3 to 16 Years Kids</p>
+          <p style={{ color: 'black' }}>3 to 16 Years Kids</p>
         </div>
         <div className="stat-card">
           <div className="stat-image">
             <img src="/images/Students2-mi.jpeg" alt="Students" />
           </div>
-          <p>1600+ Students</p>
+          <p style={{ color: 'black' }}>1600+ Students</p>
         </div>
         <div className="stat-card">
           <div className="stat-image">
             <img src="/images/Group10-mi.jpeg" alt="Countries" />
           </div>
-          <p>4 Countries</p>
+          <p style={{ color: 'black' }}>4 Countries</p>
         </div>
         <div className="stat-card">
           <div className="stat-image">
             <img src="/images/rating-min-mi.jpeg" alt="Reviews" />
           </div>
-          <p>4.6/5 on Google & FB</p>
+          <p style={{ color: 'black' }}>4.6/5 on Google & FB</p>
         </div>
       </div>
       {/* Achievements Details Section */}

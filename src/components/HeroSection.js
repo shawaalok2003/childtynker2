@@ -9,6 +9,8 @@ const HeroSection = () => {
   const [phone, setPhone] = useState("");
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [textIndex, setTextIndex] = useState(0);
+  const [showTrialPopup, setShowTrialPopup] = useState(false);
+  const [showPlayzonePopup, setShowPlayzonePopup] = useState(false);
 
   // Text switching between "robotics" and "coding"
   const options = ["robotics", "coding"];
@@ -20,6 +22,24 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Popup timers
+  useEffect(() => {
+    // Trial class popup after 3 seconds
+    const trialTimer = setTimeout(() => {
+      setShowTrialPopup(true);
+    }, 3000);
+
+    // Playzone popup after 10 seconds
+    const playzoneTimer = setTimeout(() => {
+      setShowPlayzonePopup(true);
+    }, 10000);
+
+    return () => {
+      clearTimeout(trialTimer);
+      clearTimeout(playzoneTimer);
+    };
+  }, []);
+
   // Navigation to registration page
   const handleBookingClick = () => {
     navigate("/register");
@@ -28,6 +48,29 @@ const HeroSection = () => {
   // Open modal for curriculum download
   const handleDownloadClick = () => {
     setIsModalOpen(true);
+  };
+
+  // Close trial popup
+  const handleCloseTrialPopup = () => {
+    setShowTrialPopup(false);
+  };
+
+  // Close playzone popup
+  const handleClosePlayzonePopup = () => {
+    setShowPlayzonePopup(false);
+  };
+
+  // Handle trial class booking
+  const handleTrialBooking = () => {
+    setShowTrialPopup(false);
+    navigate("/register");
+  };
+
+  // Handle playzone navigation
+  const handlePlayzoneClick = () => {
+    setShowPlayzonePopup(false);
+    // Navigate to playzone or open playzone functionality
+    window.open("/playzone", "_blank");
   };
 
   // Email and phone validation
@@ -96,6 +139,44 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Trial Class Popup */}
+      {showTrialPopup && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <button className="popup-close" onClick={handleCloseTrialPopup}>×</button>
+            <h2>🎉 Special Offer!</h2>
+            <p>Book your child's first trial class today and discover the world of robotics & coding!</p>
+            <div className="popup-buttons">
+              <button className="popup-btn primary" onClick={handleTrialBooking}>
+                Book Trial Class Now
+              </button>
+              <button className="popup-btn secondary" onClick={handleCloseTrialPopup}>
+                Maybe Later
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Playzone Popup */}
+      {showPlayzonePopup && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <button className="popup-close" onClick={handleClosePlayzonePopup}>×</button>
+            <h2>🎮 Ready to Play?</h2>
+            <p>Explore our interactive playzone where learning meets fun! Let your child experiment with coding and robotics in a safe environment.</p>
+            <div className="popup-buttons">
+              <button className="popup-btn primary" onClick={handlePlayzoneClick}>
+                Enter Playzone
+              </button>
+              <button className="popup-btn secondary" onClick={handleClosePlayzonePopup}>
+                Not Now
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Modal for Email & Phone Input */}
       {isModalOpen && !isFormSubmitted && (

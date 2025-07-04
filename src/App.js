@@ -41,6 +41,7 @@ import Dashboard from './components/Auth/Dashboard';
 import TeacherDashboard from './components/Auth/TeacherDashboard';
 import { StudentDashboard } from './components/StudentDashboard';
 import AdminPanel from './components/Auth/AdminPanel';
+import PlayZone from './components/PlayZone';
 
 function App() {
   return (
@@ -132,6 +133,7 @@ function App() {
           <Route path="/iot-master-package" element={<IOTMasterPackage/>} />
           <Route path="/aiml-master-package" element={<AIMLMasterPackage/>} /> 
           <Route path="/generate-payment" element={<PaymentGenerator/>} />
+          <Route path="/playzone" element={<PlayZone/>} />
         </Routes>
       </div>
     </Router>
