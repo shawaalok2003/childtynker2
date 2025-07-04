@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { auth, db } from "../../firebase/config";
 import "./Login.css"; // Make sure to create this CSS file
 
 const carouselImages = [
@@ -12,6 +14,7 @@ const carouselImages = [
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "", role: "student" });
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const navigate = useNavigate();
 
@@ -19,16 +22,62 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError("");
+
     try {
-      await axios.post("https://childtynker-backend-3.onrender.com/api/login", formData);
-      localStorage.setItem('userEmail', formData.email);
-      if (formData.role === "student") {
-        navigate("/dashboard/student");
-      } else if (formData.role === "teacher") {
-        navigate("/dashboard/teacher");
+      // Sign in with Firebase
+      const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
+      const user = userCredential.user;
+
+      // Get user role from Firestore
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+      
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        
+        // Check if user role matches selected role
+        if (userData.role !== formData.role) {
+          setError(`This account is registered as a ${userData.role}, not a ${formData.role}`);
+          return;
+        }
+
+        // Store user data in sessionStorage for current session only
+        sessionStorage.setItem('userEmail', user.email);
+        sessionStorage.setItem('userRole', userData.role);
+        sessionStorage.setItem('userId', user.uid);
+
+        // Navigate based on role
+        if (userData.role === "student") {
+          navigate("/dashboard/student");
+        } else if (userData.role === "teacher") {
+          navigate("/dashboard/teacher");
+        } else if (userData.role === "admin") {
+          navigate("/dashboard/admin");
+        }
+      } else {
+        setError("User profile not found. Please contact support.");
       }
     } catch (err) {
-      setError("Invalid credentials");
+      console.error("Login error:", err);
+      switch (err.code) {
+        case 'auth/user-not-found':
+          setError("No account found with this email address.");
+          break;
+        case 'auth/wrong-password':
+          setError("Incorrect password. Please try again.");
+          break;
+        case 'auth/invalid-email':
+          setError("Invalid email address.");
+          break;
+        case 'auth/too-many-requests':
+          setError("Too many failed attempts. Please try again later.");
+          break;
+        default:
+          setError("Login failed. Please check your credentials and try again.");
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -46,13 +95,30 @@ const Login = () => {
         <h2>Login</h2>
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>
-          <select name="role" onChange={handleChange}>
+          <select name="role" onChange={handleChange} value={formData.role}>
             <option value="student">Student</option>
             <option value="teacher">Teacher</option>
+            <option value="admin">Admin</option>
           </select>
-          <input type="email" name="email" placeholder="Email" required onChange={handleChange} />
-          <input type="password" name="password" placeholder="Password" required onChange={handleChange} />
-          <button type="submit">Login</button>
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Email" 
+            required 
+            onChange={handleChange}
+            value={formData.email}
+          />
+          <input 
+            type="password" 
+            name="password" 
+            placeholder="Password" 
+            required 
+            onChange={handleChange}
+            value={formData.password}
+          />
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Logging in..." : "Login"}
+          </button>
         </form>
         <p className="signup-text">
           Don't have an account? <a href="/signup">Sign up</a>
